@@ -774,3 +774,4 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 @media (max-width:900px){
   .feat .media,.feat.flip .media{order:-1 !important;margin-bottom:28px}
 }
+@media (max-width:900px){.team.swipe > .ph{flex:0 0 46%;scroll-snap-align:start}}
