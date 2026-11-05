@@ -558,3 +558,27 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .tex-panel .slash{display:block;width:1.5px;height:clamp(44px,5vw,70px);background:#2A2622;transform:rotate(28deg);margin:clamp(20px,2.6vw,34px) 0;opacity:.85}
 .menu-panel-grid .ph{height:100%;aspect-ratio:auto;min-height:420px}
 @media (max-width:900px){.menu-panel-grid{grid-template-columns:1fr}.menu-panel-grid .ph{min-height:0;aspect-ratio:4/5}}
+
+/* v11: menus — big words, photo follows the cursor */
+.menu-reveal{position:relative;background:#F1E9DA url(../img/texture-lines.jpg) center/cover;background-blend-mode:multiply;padding:clamp(70px,9vw,130px) 0}
+.menu-reveal .top{display:flex;justify-content:space-between;gap:20px;font-size:14px;margin-bottom:clamp(20px,3vw,40px)}
+.menu-reveal .top span:last-child{opacity:.6}
+.mr-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(10px,1.4vw,18px) 0;border-top:1px solid rgba(32,27,22,.18);position:relative;z-index:2}
+.mr-row:last-child{border-bottom:1px solid rgba(32,27,22,.18)}
+.mr-row .w{font-size:clamp(64px,11vw,170px);letter-spacing:-.06em;line-height:.9;transition:color .3s var(--ease),transform .5s var(--ease)}
+.mr-row .m{font-size:15px;opacity:.7;text-align:right;max-width:26ch}
+.mr-row .thumb{display:none}
+.mr-row svg{width:clamp(22px,2.4vw,34px);height:auto;transition:transform .4s var(--ease)}
+.mr-row:hover .w{color:var(--caramel);transform:translateX(10px)}
+.mr-row:hover svg{transform:translateX(6px)}
+.mr-float{position:fixed;left:0;top:0;width:clamp(220px,22vw,340px);aspect-ratio:4/5;pointer-events:none;z-index:1;opacity:0;
+  transform:translate(-50%,-50%) rotate(-4deg) scale(.9);transition:opacity .3s var(--ease),transform .4s var(--ease);overflow:hidden;box-shadow:0 30px 60px -25px rgba(32,27,22,.5)}
+.mr-float.on{opacity:1;transform:translate(-50%,-50%) rotate(-4deg) scale(1)}
+.mr-float img{width:100%;height:100%;object-fit:cover}
+@media (hover:none),(max-width:900px){
+  .mr-float{display:none}
+  .mr-row{grid-template-columns:1fr auto}
+  .mr-row .m{display:none}
+  .mr-row .thumb{display:block;width:64px;height:80px;object-fit:cover;order:2}
+  .mr-row svg{display:none}
+}

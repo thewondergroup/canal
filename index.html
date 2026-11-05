@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=14">
+<link rel="stylesheet" href="css/style.css?v=15">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -78,18 +78,14 @@
 </section>
 
 <!-- Menus -->
-<section class="sec s">
-  <div class="wrap menu-panel-grid rv">
-    <div class="tex-panel">
-      <span class="eyebrow">Our menus</span>
-      <a href="menus.html">Food menu</a>
-      <span class="slash" aria-hidden="true"></span>
-      <a href="menus.html#drinks">Wine &amp; drinks</a>
-      <span class="slash" aria-hidden="true"></span>
-      <a href="festive.html">Christmas</a>
-    </div>
-    <div class="ph "><img src="img/schnitzel.jpg" alt="Chicken schnitzel with fries and a glass of white" loading="lazy"></div>
+<section class="menu-reveal" data-reveal>
+  <div class="wrap">
+    <div class="top rv"><span><span data-today>Today’s menu</span></span><span>Changes through the week</span></div>
+    <a class="mr-row rv" href="menus.html" data-img="img/wall-crudo.jpg"><span class="w">Food</span><span class="m">Lunch &amp; dinner, mostly for sharing</span><img class="thumb" src="img/wall-crudo.jpg" alt=""><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <a class="mr-row rv" href="menus.html#drinks" data-img="img/cocktails.jpg"><span class="w">Drinks</span><span class="m">Cocktails, beer &amp; wine by the glass</span><img class="thumb" src="img/cocktails.jpg" alt=""><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    <a class="mr-row rv" href="festive.html" data-img="img/festive2.jpg"><span class="w">Christmas</span><span class="m">Festive sharing menu &amp; Christmas Day</span><img class="thumb" src="img/festive2.jpg" alt=""><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
   </div>
+  <div class="mr-float" aria-hidden="true"><img alt=""></div>
 </section>
 
 <!-- What's on now -->
@@ -207,7 +203,7 @@
   </div>
 </footer>
 <script src="js/config.js?v=7"></script>
-<script src="js/site.js?v=7"></script>
+<script src="js/site.js?v=8"></script>
 <script src="js/live.js?v=7"></script>
 <script src="js/ripple.js?v=7"></script>
 <script src="js/menus.js?v=7"></script>
