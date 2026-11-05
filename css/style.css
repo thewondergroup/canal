@@ -675,3 +675,23 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .xcards.swipe > .xcard{flex:0 0 82%;scroll-snap-align:start}
   .xcards.swipe{margin:0 calc(-1 * var(--g));padding:0 var(--g);scroll-padding-left:var(--g)}
 }
+
+/* v16: Christmas story */
+.xstory{padding-top:0}
+.xs-row{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2vw,32px);align-items:center;margin-bottom:clamp(70px,9vw,140px)}
+.xs-row:last-child{margin-bottom:0}
+.xs-txt{grid-column:1/6}
+.xs-media{grid-column:7/13}
+.xs-row.flip .xs-txt{grid-column:8/13;order:2}
+.xs-row.flip .xs-media{grid-column:1/7;order:1}
+.xs-media .ph,.xs-media .vid{aspect-ratio:4/5}
+.xs-media .arch img{filter:grayscale(1) contrast(1.05)}
+.xs-n{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel);margin-bottom:16px}
+.xs-big{font-size:clamp(30px,3.4vw,52px);letter-spacing:-.04em;line-height:1.02;margin-bottom:18px}
+.xs-small{font-size:17px;line-height:1.55;opacity:.78;max-width:42ch}
+@media (max-width:900px){
+  .xs-row,.xs-row.flip{grid-template-columns:1fr}
+  .xs-txt,.xs-media,.xs-row.flip .xs-txt,.xs-row.flip .xs-media,.xs-row .xs-media{grid-column:1/-1;order:0}
+  .xs-media{order:-1 !important}
+}
+.xs-media .vid.land{aspect-ratio:4/3}
