@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=26">
+<link rel="stylesheet" href="css/style.css?v=27">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -272,7 +272,7 @@ h += f"""
     <div class="ph rv" style="aspect-ratio:21/9"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse served at the table" loading="lazy"></div>
     <div class="wide-txt rv">
       <h2>Bouillabaisse by the water</h2>
-      <div><p class="lead">Inspired by Marseille, served in courses for the table. Booked ahead.</p>
+      <div><p class="lead">Inspired by Marseille, served in courses for the table. £75 per person, for groups of 6 or more.</p>
         <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="menus.html#bouillabaisse">View menu</a></div></div>
     </div>
   </div>
@@ -363,7 +363,7 @@ def book_band(title="Have you booked yet?", label="Book a table", href=None, ext
 
 # ===================================================================== MENUS
 m = head("Menus | Canal, Westbourne Park",
-         "Canal's seasonal food menu and drinks list, with bouillabaisse and group menus. Modern European on the Grand Union Canal, Westbourne Park.", "menus")
+         "Canal's seasonal food menu and drinks list, plus bouillabaisse for groups of 6+ (£75pp). Modern European on the Grand Union Canal, Westbourne Park.", "menus")
 m += header("menus.html")
 m += f"""
 <section class="phero short-hero">
@@ -371,22 +371,45 @@ m += f"""
   <div class="in"><span class="tag">Westbourne Park</span><h1>Our menus.</h1></div>
 </section>
 
-<section class="sec print-sec">
-  <div class="print-wrap">
-    <div id="menu" class="print" data-menus="data/menu.csv">
-      <p class="print-date"><span data-today>Today’s menu</span></p>
+<section class="sec note-sec">
+  <div class="wrap note-grid">
+    <div id="menu" class="note-menu" data-menus="data/menu.csv">
+      <p class="note-date"><span data-today>Today’s menu</span></p>
       <div class="menu-tabs" role="tablist"></div>
       <div class="menu-body"></div>
-      <p class="print-fine">v vegetarian · ve vegan · Discretionary 13.5% service · £1 per person for unlimited filtered water.<br>Please tell us about any allergies when you book.</p>
-      <div class="btns" style="justify-content:center;margin-top:28px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div>
+      <p class="note-fine">v vegetarian // ve vegan<br>Discretionary 13.5% service // £1pp for unlimited filtered water<br>Please tell us about any allergies when you book.</p>
+      <div class="btns" style="margin-top:28px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div>
     </div>
+    <aside class="note-art" aria-hidden="true">
+      <div class="ph a1"><img src="img/archive-fish.jpg" alt="" loading="lazy"></div>
+      <div class="ph a2"><img src="img/archive-tub.jpg" alt="" loading="lazy"></div>
+    </aside>
   </div>
 </section>
 
-<section class="sec s print-extras" id="bouillabaisse">
+<section class="sec note-sec bouill" id="bouillabaisse">
+  <div class="wrap note-grid">
+    <div class="note-menu">
+      <h2 class="note-title">Bouillabaisse</h2>
+      <ul class="note-lines">
+        <li>Mussels escabeche</li><li>Fried olives, leek mayonnaise</li>
+        <li class="gap">Bouillabaisse</li><li>Croutons, garlic, rouille &amp; gruyère</li>
+        <li class="gap">Monkfish, gurnard, mussels &amp; clams</li>
+        <li class="gap">Pink Fir potatoes</li><li>Greens</li>
+        <li class="gap">Chocolate cremeux, olive oil &amp; sea salt</li>
+      </ul>
+      <p class="note-price">£75pp // groups of 6+</p>
+      <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire {ARR}</a></div>
+    </div>
+    <aside class="note-art single" aria-hidden="true">
+      <div class="ph a1"><img src="img/archive-fishwife.jpg" alt="" loading="lazy"></div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec s print-extras">
   <div class="print-wrap">
-    <p><strong>Bouillabaisse for the table.</strong> Inspired by Marseille, served in courses, booked ahead. <a href="{ENQ}" target="_blank" rel="noopener">Enquire</a> · <a href="{pdf('bouillabaisse')}" target="_blank" rel="noopener">See the menu</a></p>
-    <p class="dl">Download: <a href="{pdf('food')}" target="_blank" rel="noopener">Food</a> · <a href="{pdf('wine')}" target="_blank" rel="noopener">Wine list</a> · <a href="{pdf('group')}" target="_blank" rel="noopener">Group menu</a> · <a href="festive.html">Christmas</a></p>
+    <p class="dl">Download: <a href="{pdf('food')}" target="_blank" rel="noopener">Food</a> · <a href="{pdf('wine')}" target="_blank" rel="noopener">Wine list</a> · <a href="{pdf('group')}" target="_blank" rel="noopener">Group menu</a> · <a href="{pdf('bouillabaisse')}" target="_blank" rel="noopener">Bouillabaisse</a> · <a href="festive.html">Christmas</a></p>
   </div>
 </section>
 """

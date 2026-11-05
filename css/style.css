@@ -721,3 +721,40 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .print-extras p{font-size:17px;margin-bottom:12px}
 .print-extras a{border-bottom:1px solid currentColor;color:var(--caramel)}
 .print-extras .dl{font-size:15px;opacity:.75}
+
+/* v18: menus as a note, like their printed bouillabaisse menu */
+.note-sec{--note:#9A5A1E}
+.note-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(30px,6vw,110px);align-items:start}
+.note-menu{color:var(--note);text-align:left}
+.note-date{font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px}
+.note-menu .menu-tabs{justify-content:flex-start;margin-bottom:clamp(30px,4vw,48px)}
+.note-menu .menu-tabs button{border-color:var(--note);color:var(--note)}
+.note-menu .menu-tabs button[aria-selected=true]{background:var(--note);color:var(--paper)}
+.note-menu .menu-panel{columns:1}
+.note-menu .menu-sec{margin-bottom:clamp(26px,3vw,40px)}
+.note-menu .menu-sec h3{display:none}
+.note-menu .menu-sec ul{list-style:none;margin:0;padding:0}
+.note-menu .menu-sec li{display:block;border:0;padding:2px 0}
+.note-menu .menu-sec li>div{display:inline}
+.note-menu .menu-sec .mi,.note-menu .menu-sec .md,.note-menu .menu-sec .mp{display:inline;font-size:clamp(18px,1.6vw,21px);opacity:1;margin:0;color:inherit;line-height:1.45}
+.note-menu .menu-sec .md::before{content:", "}
+.note-menu .menu-sec .mp::before{content:"  "}
+.note-menu .menu-sec .mp{margin-left:10px;opacity:.65}
+.note-menu .mtag{color:var(--note);border-color:var(--note);opacity:.6}
+.note-fine{font-size:14px;line-height:1.6;opacity:.75;margin-top:10px}
+.note-title{font-size:clamp(40px,5vw,72px);letter-spacing:-.045em;line-height:1;margin-bottom:28px;color:var(--note)}
+.note-lines{list-style:none;margin:0 0 28px;padding:0}
+.note-lines li{font-size:clamp(18px,1.6vw,21px);line-height:1.45}
+.note-lines li.gap{margin-top:22px}
+.note-price{font-size:15px;margin-bottom:24px}
+.note-art{position:sticky;top:110px;padding-bottom:20px}
+.note-art .ph img{filter:grayscale(1) contrast(1.05)}
+.note-art .a1{width:78%;margin-left:auto;aspect-ratio:3/4}
+.note-art .a2{width:52%;aspect-ratio:4/5;margin-top:-22%;box-shadow:0 24px 50px -24px rgba(32,27,22,.45)}
+.note-art.single .a1{width:86%;aspect-ratio:auto}
+.bouill{border-top:1px solid var(--line)}
+@media (max-width:900px){
+  .note-grid{grid-template-columns:1fr}
+  .note-art{position:static}
+  .note-art .a1{width:80%}
+}
