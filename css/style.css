@@ -603,3 +603,38 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .phero .media img{width:100%;height:100%;object-fit:cover}
 .phero.split .media img.m-only{display:none}
 @media (max-width:900px){.phero.split .media img{display:none}.phero.split .media img.m-only{display:block}}
+
+/* v13: Christmas & groups */
+.xhero{min-height:86svh}
+.xhero .media img{object-position:center 60%}
+.big-num{display:block;font-size:clamp(64px,8vw,128px);letter-spacing:-.06em;line-height:.85;color:var(--caramel);margin-bottom:14px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px)}
+.choice{border-top:1px solid var(--ink);padding-top:22px;display:flex;flex-direction:column}
+.choice h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.025em;margin-bottom:8px}
+.choice p{font-size:16px;opacity:.75;max-width:34ch;margin-bottom:20px}
+.see{margin-top:18px;border-top:1px solid var(--line)}
+.see summary{list-style:none;cursor:pointer;padding:12px 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+.see summary::-webkit-details-marker{display:none}
+.see summary::after{content:"+";color:var(--caramel);font-size:18px;line-height:1;transition:transform .3s}
+.see[open] summary::after{transform:rotate(45deg)}
+.see .dishes li{font-size:15px;padding:6px 0}
+.feast{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.feast .ph{aspect-ratio:3/4;border-radius:0}
+.give{display:grid;grid-template-columns:1fr 1fr auto;gap:clamp(20px,4vw,60px);align-items:end;border-top:1px solid var(--line);padding-top:clamp(28px,4vw,44px)}
+.give h2{font-size:clamp(44px,6vw,90px);letter-spacing:-.05em;line-height:.9}
+.give .lead{font-size:18px;max-width:34ch;margin:0}
+.formats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px)}
+.format{display:flex;flex-direction:column;gap:18px}
+.format .ph{aspect-ratio:4/5}
+.format:hover .ph img{transform:scale(1.035)}
+.fmt-txt h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.025em;margin-bottom:8px}
+.fmt-txt p{font-size:16px;opacity:.75;max-width:34ch;margin-bottom:14px}
+.occasions{font-size:clamp(36px,5.6vw,92px);letter-spacing:-.05em;line-height:1.02;max-width:18ch}
+.occasions em{font-style:normal;color:var(--caramel)}
+@media (max-width:900px){
+  .choices{grid-template-columns:1fr}
+  .feast{grid-template-columns:repeat(3,1fr)}
+  .give{grid-template-columns:1fr}
+  .formats.swipe > a{flex:0 0 82%;scroll-snap-align:start}
+  .formats.swipe{margin:0 calc(-1 * var(--g));padding:0 var(--g);scroll-padding-left:var(--g)}
+}

@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=17">
+<link rel="stylesheet" href="css/style.css?v=18">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -133,7 +133,7 @@ FOOT = f"""<footer class="footer">
   </div>
 </footer>
 <script src="js/config.js?v=7"></script>
-<script src="js/site.js?v=8"></script>
+<script src="js/site.js?v=9"></script>
 <script src="js/live.js?v=7"></script>
 <script src="js/ripple.js?v=7"></script>
 <script src="js/menus.js?v=7"></script>
@@ -431,88 +431,57 @@ m += FOOT
 write("menus.html", m)
 
 # ===================================================================== FESTIVE
+def choice(big, label, line, cta_html, menu_html):
+    return f"""<div class="choice rv">
+      <span class="big-num">{big}</span>
+      <h3>{label}</h3>
+      <p>{line}</p>
+      <div class="btns">{cta_html}</div>
+      <details class="see"><summary>See the menu</summary><div class="dishes one">{menu_html}</div></details>
+    </div>"""
+
+
+FEST_MENU = """<div><h4>For the table</h4><ul><li>Bread, brown butter</li><li>Todolí citrus &amp; radicchio salad</li><li>Shellfish cocktail</li><li>Hand-dived scallop, ’nduja butter, sea aster <small>+£15 each</small></li></ul>
+<h4>One main for the table</h4><ul><li>Braised short rib, celeriac, roasted carrot, horseradish</li><li>Curried monkfish pie</li><li>Delica pumpkin risotto, chestnut &amp; Cashel Blue <small>v</small></li></ul>
+<h4>Sides &amp; dessert</h4><ul><li>Fries · winter leaf salad</li><li>Brown butter cake, spiced poached pear, crème fraîche</li></ul></div>"""
+XMAS_MENU = """<div><h4>To start</h4><ul><li>Forget de Brimont, Brut Terroir, Champagne</li><li>Soda bread &amp; brown butter</li><li>Smoked trout, crème fraîche, pickled fennel</li><li>Coombeshead Farm ham</li><li>Montgomery cheddar dumplings, Tunworth custard</li><li>Burrata, Todolí citrus, hazelnut, balsamic</li><li>Crudo, clementine, fennel</li></ul>
+<h4>For the table</h4><ul><li>Roast duck, creamed Brussels sprouts, quince</li><li>Fried potato, duck fat, confit garlic</li><li>Steamed carrots, chervil butter</li></ul>
+<h4>Dessert</h4><ul><li>Brown butter cake, spiced pear, crème fraîche</li></ul></div>"""
+PARTY_MENU = """<div><h4>Sizes</h4><ul><li>Book online · up to 30</li><li>Seated · 50 – 70</li><li>Standing · up to 100</li><li>Standing, with the terrace · up to 150</li></ul>
+<h4>Food</h4><ul><li>Seated parties: the festive sharing menu</li><li>Standing parties: bites and bowls</li></ul></div>"""
+
 f = head("Christmas at Canal | Christmas Day Lunch & Festive Menu, Westbourne Park",
          "Christmas Day lunch (£100) and a £68 festive sharing menu at Canal on the Grand Union Canal. Christmas parties for up to 150 with the terrace.", "festive")
 f += header("festive.html")
-f += page_hero("Christmas 2026", "Christmas at Canal.",
-               '<img src="img/xmas-6.jpg" alt="Roast duck, carrots and chard at Christmas lunch">' +
-               '<img src="img/xmas-4.jpg" alt="The Christmas table from above">' +
-               '<img class="m-only" src="img/xmas-5.jpg" alt="Christmas Day lunch at Canal">', split=True)
 f += f"""
-<section class="intro-sec">
-  <div class="wrap intro-grid">
-    <p class="statement rv">A place to gather, a place to indulge. Celebrate the festive season <em>by the water.</em></p>
-    <div class="rv"><p class="body" style="margin-bottom:22px">A sharing menu for tables of any size, a long Christmas Day lunch, and the whole place — terrace included — for parties.</p>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a><a class="btn line" href="{ENQ}" target="_blank" rel="noopener">Party enquiries</a></div></div>
-  </div>
+<section class="phero xhero">
+  <div class="media"><img src="img/xmas-1.jpg" alt="Christmas Day lunch at Canal, roast duck in the middle of the table"></div>
+  <div class="in"><span class="tag" data-countdown>Christmas 2026</span><h1>Christmas at Canal.</h1></div>
 </section>
 
-<section class="sec" id="festive-menu">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">Festive menu · £68 pp</span>
-      <h2>The sharing menu</h2>
-      <p class="lead">For the whole table, with one main chosen in advance. Lunch and dinner through the festive season, up to 30 online.</p>
-      <div class="dishes one">
-        <div>
-          <h4>For the table</h4><ul><li>Bread, brown butter</li><li>Todolí citrus &amp; radicchio salad</li><li>Shellfish cocktail</li><li>Hand-dived scallop, ’nduja butter, sea aster <small>+£15 each</small></li></ul>
-          <h4>One main for the table</h4><ul><li>Braised short rib, celeriac, roasted carrot, horseradish</li><li>Curried monkfish pie</li><li>Delica pumpkin risotto, chestnut &amp; Cashel Blue <small>v</small></li></ul>
-          <h4>Sides &amp; dessert</h4><ul><li>Fries · winter leaf salad</li><li>Brown butter cake, spiced poached pear, crème fraîche</li></ul>
-        </div>
-      </div>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a><a class="btn line" href="{pdf('festive')}" target="_blank" rel="noopener">PDF</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/festive2.jpg" alt="Curried monkfish pie, short rib, fries and winter leaves" loading="lazy"></div>
-      {arch('archive-barge.jpg', 'Archive photograph of a woman with a mug on a working barge', '')}
+<section class="sec">
+  <div class="wrap">
+    <div class="kicker rv"><h2>Three ways to do it</h2><p>A place to gather, a place to indulge — by the water.</p></div>
+    <div class="choices">
+      {choice('£68', 'Festive sharing menu', 'For the whole table, one main chosen in advance. Lunch and dinner through December.',
+              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>', FEST_MENU)}
+      {choice('£100', 'Christmas Day lunch', 'Champagne to start, plates to pass, roast duck in the middle of it all.',
+              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the 25th</a><a class="btn line" href="{pdf("xmasveg")}" target="_blank" rel="noopener">Vegetarian</a>', XMAS_MENU)}
+      {choice('150', 'Parties', 'Seated or standing, the whole place and the terrace, all lit up.',
+              f'<a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf("brochure")}" target="_blank" rel="noopener">Brochure</a>', PARTY_MENU)}
     </div>
   </div>
 </section>
 
-<section class="sec" id="christmas-day">
-  <div class="wrap feat flip">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">25 December · £100 pp</span>
-      <h2>Christmas Day lunch</h2>
-      <p class="lead">Champagne to start, a table full of things to pass, and roast duck in the middle of it all.</p>
-      <div class="dishes one">
-        <div>
-          <h4>To start</h4><ul><li>Forget de Brimont, Brut Terroir, Champagne</li><li>Soda bread &amp; brown butter</li><li>Smoked trout, crème fraîche, pickled fennel</li><li>Coombeshead Farm ham</li><li>Montgomery cheddar dumplings, Tunworth custard</li><li>Burrata, Todolí citrus, hazelnut, balsamic</li><li>Crudo, clementine, fennel</li></ul>
-          <h4>For the table</h4><ul><li>Roast duck, creamed Brussels sprouts, quince</li><li>Fried potato, duck fat, confit garlic</li><li>Steamed carrots, chervil butter</li></ul>
-          <h4>Dessert</h4><ul><li>Brown butter cake, spiced pear, crème fraîche</li></ul>
-        </div>
-      </div>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day</a><a class="btn line" href="{pdf('xmasday')}" target="_blank" rel="noopener">Menu</a><a class="btn line" href="{pdf('xmasveg')}" target="_blank" rel="noopener">Vegetarian</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/xmas-7.jpg" alt="Roast duck being carved at the table" loading="lazy"></div>
-    </div>
-  </div>
+<section class="feast" aria-label="Christmas at Canal">
+  {''.join(f'<div class="ph"><img src="img/{n}" alt="{a}" loading="lazy"></div>' for n, a in [('xmas-6.jpg','Roast duck with carrots'),('xmas-2.jpg','Christmas starters'),('festive2.jpg','Curried monkfish pie'),('xmas-8.jpg','Carving the duck'),('xmas-4.jpg','The Christmas table'),('xmas-3.jpg','Roast duck and sides')])}
 </section>
 
-<section class="sec" id="parties">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">Christmas parties</span>
-      <h2>The whole place, the water, the lights</h2>
-      <p class="lead">Seated parties eat the festive sharing menu. Standing parties get bites and bowls, and the bar.</p>
-      <ul class="facts">
-        <li><span>Book online</span><span>Up to 30</span></li>
-        <li><span>Seated</span><span>50 – 70</span></li>
-        <li><span>Standing</span><span>Up to 100</span></li>
-        <li><span>Standing, with the terrace</span><span>Up to 150</span></li>
-      </ul>
-      <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf('brochure')}" target="_blank" rel="noopener">Event brochure</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/xmas-8.jpg" alt="Carving the duck at the Christmas table" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec s">
-  <div class="wrap services swipe">
-    {''.join(f'<div class="rv">{ph(n, a)}</div>' for n, a in [('xmas-1.jpg','Christmas lunch spread at Canal'),('xmas-2.jpg','Christmas starters'),('xmas-3.jpg','Roast duck and sides')])}
+<section class="sec">
+  <div class="wrap give rv">
+    <div><span class="tag" style="color:var(--caramel)">Stuck for a present?</span><h2>Give Canal.</h2></div>
+    <p class="lead">Digital gift vouchers for any amount, sent straight to their inbox.</p>
+    <div class="btns"><a class="btn" href="{GIFT}" target="_blank" rel="noopener">Buy a gift voucher {ARR}</a></div>
   </div>
 </section>
 """
@@ -521,42 +490,42 @@ f += FOOT
 write("festive.html", f)
 
 # ===================================================================== GROUPS
+def fmt(img_html, num, label, line, guests):
+    return f"""<a class="format rv" href="#enquire" data-guests="{guests}" data-occasion="{label}">
+      {img_html}
+      <div class="fmt-txt"><span class="big-num">{num}</span><h3>{label}</h3><p>{line}</p><span class="arrow">Enquire {ARR}</span></div>
+    </a>"""
+
+
 g = head("Groups, Private Hire & Events | Canal, Westbourne Park",
          "Private hire and group bookings at Canal on the Grand Union Canal: up to 70 seated or 120 standing, with a south-facing terrace.", "groups")
 g += header("groups.html")
-g += page_hero("Groups &amp; private hire", "Bring everyone.", f'<img src="img/spread-spring.jpg" alt="A long table of sharing plates at Canal">')
+g += page_hero("Groups &amp; private hire", "Bring everyone.", hvid('v-terrace-table', 'A group at lunch on the terrace, seen from above'))
 g += f"""
-<section class="intro-sec">
-  <div class="wrap intro-grid">
-    <p class="statement rv">Big tables, part hire or the whole place — with a terrace on the water and a menu <em>built for a crowd.</em></p>
-    <div class="rv"><p class="body" style="margin-bottom:22px">Birthdays, brand dinners, launches, summer parties, a wedding lunch with the canal behind you. Tell us the shape of it and we’ll do the rest.</p>
-      <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire {ARR}</a><a class="btn line" href="{pdf('group')}" target="_blank" rel="noopener">Group menu</a></div></div>
+<section class="sec">
+  <div class="wrap">
+    <div class="kicker rv"><h2>Pick your format</h2><p>Up to 6 book online. For anything bigger, tell us the shape of it.</p></div>
+    <div class="formats swipe">
+      {fmt(ph('spread-spring.jpg', 'A long table of sharing plates'), '8+', 'A long table', 'A big table in the dining room or on the terrace, eating from the sharing set menu.', '8')}
+      {fmt(ph('room-waiter.jpg', 'The dining room at Canal'), '70', 'Seated dinner', 'The whole dining room to yourselves — a long lunch or dinner, set up your way.', '40')}
+      {fmt(ph('og.jpg', 'The terrace beside the canal'), '120', 'The whole place', 'Dining room, bar and terrace. Drinks, bites and bowls for a crowd.', '100')}
+    </div>
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">How it works</span>
-      <h2>Three ways to do it</h2>
-      <ul class="facts">
-        <li><span>Big tables</span><span>8 or more · sharing set menu</span></li>
-        <li><span>Part hire</span><span>Dining room or terrace · 20 – 40</span></li>
-        <li><span>Exclusive hire, seated</span><span>Up to 70</span></li>
-        <li><span>Exclusive hire, standing</span><span>Up to 120</span></li>
-      </ul>
-      <p class="lead">Up to 6 can book online. For anything bigger, send us an enquiry and the events team will come back to you.</p>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/room-waiter.jpg" alt="The dining room at Canal" loading="lazy"></div>
-      {arch('archive-fishermen.jpg', 'Archive photograph of three fishermen sitting together on deck', '')}
-    </div>
+<section class="sec s occasions-sec">
+  <div class="wrap">
+    <span class="tag rv" style="color:var(--caramel)">What people book us for</span>
+    <p class="occasions rv">Birthdays. Launches. Wedding lunches. Leaving drinks. Long Sundays. <em>Christmas parties.</em></p>
   </div>
 </section>
 
 <section class="sec s">
-  <div class="wrap services swipe">
-    {''.join(f'<div class="rv">{ph(n, a)}</div>' for n, a in [('bar.jpg','The bar'),('banquette.jpg','Banquette seating'),('window-table.jpg','A table by the terrace window')])}
+  <div class="wrap team swipe">
+    {vid('v-terrace-plates', 'Plates arriving at a terrace table by the canal')}
+    {vid('v-terrace-drink', 'A guest with a glass of wine on the terrace')}
+    {vid('v-terrace-man', 'Lunch on the terrace from above')}
+    {vid('v-pour', 'Wine being poured at the table')}
   </div>
 </section>
 
@@ -566,7 +535,7 @@ g += f"""
       <span class="tag" style="color:var(--caramel)">Enquire</span>
       <h2 class="h2">Tell us what you’re planning.</h2>
       <p class="body">The quickest way is our events form — it goes straight to the team. Or fill this in and it opens an email to us.</p>
-      <div class="btns" style="margin-top:22px"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Events form</a></div>
+      <div class="btns" style="margin-top:22px"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Events form</a><a class="btn line" href="{pdf('group')}" target="_blank" rel="noopener">Group menu</a></div>
       <p class="body muted" style="margin-top:22px">hello@canalrestaurant.com · 020 8176 6073</p>
     </div>
     <form id="enquiry" class="form rv">
@@ -575,7 +544,7 @@ g += f"""
       <div class="field"><label for="f3">Phone</label><input id="f3" name="phone" type="tel"></div>
       <div class="field"><label for="f4">Guests</label><input id="f4" name="guests" type="number" min="8"></div>
       <div class="field"><label for="f5">Date</label><input id="f5" name="date" type="date"></div>
-      <div class="field"><label for="f6">Occasion</label><select id="f6" name="type"><option>Birthday / celebration</option><option>Corporate</option><option>Drinks reception</option><option>Launch / brand event</option><option>Wedding</option><option>Bouillabaisse</option><option>Christmas party</option><option>Other</option></select></div>
+      <div class="field"><label for="f6">Occasion</label><select id="f6" name="type"><option>A long table</option><option>Seated dinner</option><option>The whole place</option><option>Birthday / celebration</option><option>Corporate</option><option>Launch / brand event</option><option>Wedding</option><option>Bouillabaisse</option><option>Christmas party</option><option>Other</option></select></div>
       <div class="field full"><label for="f7">Anything else</label><textarea id="f7" name="message"></textarea></div>
       <button class="btn" type="submit">Send enquiry</button>
       <p class="msg full" aria-live="polite"></p>
@@ -583,7 +552,7 @@ g += f"""
   </div>
 </section>
 """
-g += book_band("Planning something?", "Enquire", ENQ)
+g += book_band("Planning something?", "Enquire", "#enquire", ext=False)
 g += FOOT
 write("groups.html", g)
 

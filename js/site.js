@@ -60,6 +60,29 @@
     });
   }
 
+  // Christmas countdown
+  var cd = document.querySelector('[data-countdown]');
+  if (cd) {
+    try {
+      var p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+      var o = {}; p.forEach(function (x) { o[x.type] = x.value; });
+      var today = Date.UTC(+o.year, +o.month - 1, +o.day), xmas = Date.UTC(+o.year, 11, 25);
+      var days = Math.round((xmas - today) / 864e5);
+      if (days > 1) cd.textContent = 'Christmas Day is ' + days + ' days away';
+      else if (days === 1) cd.textContent = 'Christmas Day is tomorrow';
+      else if (days === 0) cd.textContent = 'Merry Christmas';
+    } catch (e) {}
+  }
+
+  // Groups: a format card fills in the enquiry form
+  document.querySelectorAll('.format[data-guests]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var g = document.getElementById('f4'), t = document.getElementById('f6');
+      if (g) g.value = a.getAttribute('data-guests');
+      if (t) t.value = a.getAttribute('data-occasion');
+    });
+  });
+
   // Newsletter (swap in the real list endpoint before launch)
   document.querySelectorAll('.signup').forEach(function (f) {
     f.addEventListener('submit', function (e) {
