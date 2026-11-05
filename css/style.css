@@ -763,3 +763,10 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .xc-over .big-num{font-size:clamp(14px,1.2vw,16px);letter-spacing:.08em;text-transform:uppercase;line-height:1.3;margin:8px 0 0;opacity:.85}
 .xc-over .big-num{text-transform:none;letter-spacing:0;font-size:clamp(15px,1.3vw,17px)}
 .xs-media .vid.gravy video{object-position:center 55%}
+/* nav: never wrap; burger below 1100px */
+.nav a{white-space:nowrap}
+@media (max-width:1260px){
+  .header{grid-template-columns:auto 1fr auto}
+  .nav,.header-right .small{display:none}
+  .burger{display:block}
+}
