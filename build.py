@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=10">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -231,6 +231,18 @@ h += f"""
     <a class="rv" href="menus.html">{ph('plates-overhead-a.jpg', 'Lunch plates on the table at Canal')}<div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
     <a class="rv" href="menus.html">{ph('table-schnitzel.jpg', 'Dinner at Canal with a glass of wine')}<div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
     <a class="rv" href="festive.html">{ph('festive2.jpg', 'The festive sharing menu at Canal')}<div class="row"><h3>Festive</h3><span>Now booking</span></div><p>A festive sharing menu, Christmas Day lunch and parties.</p></a>
+  </div>
+</section>
+
+<!-- Menus -->
+<section class="sec s">
+  <div class="wrap">
+    <span class="tag rv" style="color:var(--caramel)">Menus</span>
+    <div class="menu-links rv">
+      <a href="menus.html"><span class="t">Food menu</span><span class="s">Lunch &amp; dinner, changes through the week</span>{ARR}</a>
+      <a href="menus.html#drinks"><span class="t">Wine &amp; drinks</span><span class="s">Cocktails, beer, wine by the glass</span>{ARR}</a>
+      <a href="festive.html"><span class="t">Christmas menus</span><span class="s">Festive menu &amp; Christmas Day</span>{ARR}</a>
+    </div>
   </div>
 </section>
 

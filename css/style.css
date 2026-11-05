@@ -513,3 +513,11 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .splish{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:22px}
 .footer .big-logo{width:min(46vw,300px);margin:0 auto 18px}
 .footer .spaced{margin:0 0 56px}
+/* menus band */
+.menu-links{border-top:1px solid var(--line)}
+.menu-links a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid var(--line);transition:padding .35s var(--ease),color .25s}
+.menu-links a:hover{padding-left:14px;color:var(--caramel)}
+.menu-links .t{font-size:clamp(32px,4.6vw,68px);letter-spacing:-.045em;line-height:1}
+.menu-links .s{font-size:14px;opacity:.6;text-align:right}
+.menu-links svg{width:clamp(18px,2vw,28px);height:auto;flex:none}
+@media (max-width:700px){.menu-links .s{display:none}}
