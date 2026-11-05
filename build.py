@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/style.css?v=26">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -363,66 +363,30 @@ def book_band(title="Have you booked yet?", label="Book a table", href=None, ext
 
 # ===================================================================== MENUS
 m = head("Menus | Canal, Westbourne Park",
-         "Canal's seasonal food menu, wine and cocktail list (with A Bar with Shapes for a Name), bouillabaisse and group menus. Modern European on the Grand Union Canal.", "menus")
+         "Canal's seasonal food menu and drinks list, with bouillabaisse and group menus. Modern European on the Grand Union Canal, Westbourne Park.", "menus")
 m += header("menus.html")
-m += page_hero("Our menus", "Led by the seasons.", f'<img src="img/plates-overhead-b.jpg" alt="Plates on the table at Canal">')
 m += f"""
-<section class="intro-sec">
-  <div class="wrap intro-grid">
-    <div><p class="splish rv"><span data-today>Today’s menu</span></p>
-    <p class="statement rv">Seasonal produce at its best — crudo and shellfish when it’s warm, braises and pies when it isn’t. <em>Most things arrive for the table.</em></p></div>
-    <div class="rv"><p class="body" style="margin-bottom:22px">The menu changes through the week. Vegetarian, vegan and gluten-free options are always on — tell us about allergies when you book.</p>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div></div>
-  </div>
+<section class="phero short-hero">
+  <div class="media"><img src="img/plates-overhead-b.jpg" alt="Plates on the table at Canal"></div>
+  <div class="in"><span class="tag">Westbourne Park</span><h1>Our menus.</h1></div>
 </section>
 
-<section class="sec s" style="padding-top:0">
-  <div class="wrap">
-    <div id="menu" class="menu-card tex rv" data-menus="data/menu.csv">
-      <img class="card-logo" src="img/logo-ink.png" alt="Canal">
-      <span class="card-sub spaced">Westbourne Park</span>
+<section class="sec print-sec">
+  <div class="print-wrap">
+    <div id="menu" class="print" data-menus="data/menu.csv">
+      <p class="print-date"><span data-today>Today’s menu</span></p>
       <div class="menu-tabs" role="tablist"></div>
       <div class="menu-body"></div>
-      <p class="fine" style="margin-top:8px">v vegetarian · ve vegan. Discretionary 13.5% service; £1 per person for unlimited filtered water.</p>
+      <p class="print-fine">v vegetarian · ve vegan · Discretionary 13.5% service · £1 per person for unlimited filtered water.<br>Please tell us about any allergies when you book.</p>
+      <div class="btns" style="justify-content:center;margin-top:28px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="bouillabaisse">
-  <div class="wrap">
-    <div class="ph rv" style="aspect-ratio:21/9"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse served at the table" loading="lazy"></div>
-    <div class="wide-txt rv">
-      <h2>Bouillabaisse by the water</h2>
-      <div><p class="lead">Inspired by Marseille: a saffron broth, the day’s fish, rouille and toasted bread, served in courses for the table. Booked ahead.</p>
-        <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf('bouillabaisse')}" target="_blank" rel="noopener">View menu</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="drinks-intro">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">The bar</span>
-      <h2>Just here for a drink?</h2>
-      <p class="lead">No booking needed. Our drinks are made with A Bar with Shapes for a Name — a balance of the classics and the progressive — with plenty of wine by the glass.</p>
-      <div class="btns"><a class="btn line" href="#drinks" onclick="var b=document.querySelector('.menu-tabs [data-m=drinks]');if(b){{b.click();document.getElementById('menu').scrollIntoView({{behavior:'smooth'}});}}return false;">See the drinks</a><a class="btn line" href="{pdf('wine')}" target="_blank" rel="noopener">Full wine list</a></div>
-    </div>
-    <div class="media rv">
-      {vid('v-pour', 'A glass of wine being poured at the table', 'big')}
-      {arch('archive-swimmer.jpg', 'Archive photograph of a woman waving from a rubber ring in the water', '')}
-    </div>
-  </div>
-</section>
-
-<section class="sec s">
-  <div class="wrap">
-    <div class="kicker rv"><h2>Take them with you</h2><p>PDFs to download or print.</p></div>
-    <div class="menu-links rv">
-      <a href="{pdf('food')}" target="_blank" rel="noopener"><span class="t" style="font-size:clamp(24px,2.6vw,36px)">Food menu</span><span class="s">PDF</span>{ARR}</a>
-      <a href="{pdf('wine')}" target="_blank" rel="noopener"><span class="t" style="font-size:clamp(24px,2.6vw,36px)">Wine list</span><span class="s">PDF</span>{ARR}</a>
-      <a href="{pdf('group')}" target="_blank" rel="noopener"><span class="t" style="font-size:clamp(24px,2.6vw,36px)">Group set menu</span><span class="s">PDF</span>{ARR}</a>
-      <a href="{pdf('bouillabaisse')}" target="_blank" rel="noopener"><span class="t" style="font-size:clamp(24px,2.6vw,36px)">Bouillabaisse</span><span class="s">PDF</span>{ARR}</a>
-    </div>
+<section class="sec s print-extras" id="bouillabaisse">
+  <div class="print-wrap">
+    <p><strong>Bouillabaisse for the table.</strong> Inspired by Marseille, served in courses, booked ahead. <a href="{ENQ}" target="_blank" rel="noopener">Enquire</a> · <a href="{pdf('bouillabaisse')}" target="_blank" rel="noopener">See the menu</a></p>
+    <p class="dl">Download: <a href="{pdf('food')}" target="_blank" rel="noopener">Food</a> · <a href="{pdf('wine')}" target="_blank" rel="noopener">Wine list</a> · <a href="{pdf('group')}" target="_blank" rel="noopener">Group menu</a> · <a href="festive.html">Christmas</a></p>
   </div>
 </section>
 """

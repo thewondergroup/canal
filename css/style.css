@@ -699,3 +699,25 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .xs-media .vid{aspect-ratio:4/3}
 
 .team .arch img{filter:grayscale(1) contrast(1.05)}
+
+/* v17: menus page — the menu is the page */
+.short-hero{min-height:52svh}
+.print-wrap{max-width:780px;margin:0 auto;padding:0 var(--g)}
+.print{text-align:center}
+.print-date{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--caramel);margin-bottom:24px}
+.print .menu-tabs{justify-content:center;margin-bottom:clamp(36px,5vw,60px)}
+.print .menu-panel{columns:1}
+.print .menu-sec{margin-bottom:clamp(36px,5vw,56px)}
+.print .menu-sec h3{border:0;padding:0;margin-bottom:16px;color:var(--caramel)}
+.print .menu-sec li{display:block;border:0;padding:7px 0}
+.print .menu-sec li>div{display:inline}
+.print .menu-sec .mi{display:inline;font-size:clamp(18px,1.7vw,21px)}
+.print .menu-sec .md{display:inline;font-size:clamp(16px,1.5vw,18px);opacity:.6;margin-left:6px}
+.print .menu-sec .md::before{content:"· "}
+.print .menu-sec .mp{display:inline;font-size:clamp(16px,1.5vw,18px);margin-left:10px;color:var(--caramel)}
+.print .mtag{vertical-align:2px}
+.print-fine{font-size:13px;opacity:.6;line-height:1.6}
+.print-extras{border-top:1px solid var(--line);text-align:center}
+.print-extras p{font-size:17px;margin-bottom:12px}
+.print-extras a{border-bottom:1px solid currentColor;color:var(--caramel)}
+.print-extras .dl{font-size:15px;opacity:.75}
