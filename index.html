@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=12">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -53,7 +53,6 @@
   </div>
   <div class="foot">
     <div>
-      <p style="margin-bottom:18px">A waterside restaurant led by the seasons.</p>
       <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn line" href="menus.html">Our menus</a></div>
     </div>
     <div class="live" data-live aria-live="polite"><span class="live-item">Mon – Sat 12 – 10pm</span><span class="live-item">Sun 12 – 8.30pm</span></div>
@@ -71,10 +70,10 @@
 
 <!-- Lunch / dinner / festive -->
 <section class="sec s">
-  <div class="wrap services">
+  <div class="wrap services swipe">
     <a class="rv" href="menus.html"><div class="ph "><img src="img/plates-overhead-a.jpg" alt="Lunch plates on the table at Canal" loading="lazy"></div><div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
     <a class="rv" href="menus.html"><div class="ph "><img src="img/table-schnitzel.jpg" alt="Dinner at Canal with a glass of wine" loading="lazy"></div><div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
-    <a class="rv" href="festive.html"><div class="ph "><img src="img/festive2.jpg" alt="The festive sharing menu at Canal" loading="lazy"></div><div class="row"><h3>Festive</h3><span>Now booking</span></div><p>A festive sharing menu, Christmas Day lunch and parties.</p></a>
+    <a class="rv" href="menus.html#drinks"><div class="ph "><img src="img/cocktails.jpg" alt="Cocktails on the bar at Canal" loading="lazy"></div><div class="row"><h3>The bar &amp; terrace</h3><span>Walk in, all day</span></div><p>No booking needed for drinks. Cocktails, wine by the glass and snacks.</p></a>
   </div>
 </section>
 
@@ -113,23 +112,19 @@
 </section>
 
 <!-- Bouillabaisse -->
-<section class="sec butter">
-  <div class="wrap feat flip">
-    <div class="txt rv">
-      <span class="tag">For the table</span>
+<section class="sec">
+  <div class="wrap">
+    <div class="ph rv" style="aspect-ratio:21/9"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse served at the table" loading="lazy"></div>
+    <div class="wide-txt rv">
       <h2>Bouillabaisse by the water</h2>
-      <p class="lead">Inspired by Marseille, Canal’s bouillabaisse brings southern France to Westbourne Park. Booked ahead for the table.</p>
-      <div class="btns"><a class="btn" href="https://hamrestaurants.tripleseat.com/party_request/43999" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="menus.html#bouillabaisse">View menu</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big land"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse served at the table" loading="lazy"></div>
-      <figure class="small arch"><div class="ph"><img src="img/archive-coracle.jpg" alt="Archive photograph of a man and two children in a small boat" loading="lazy"></div></figure>
+      <div><p class="lead">Inspired by Marseille, served in courses for the table. Booked ahead.</p>
+        <div class="btns"><a class="btn" href="https://hamrestaurants.tripleseat.com/party_request/43999" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="menus.html#bouillabaisse">View menu</a></div></div>
     </div>
   </div>
 </section>
 
 <!-- Groups -->
-<section class="sec blush">
+<section class="sec">
   <div class="wrap feat flip">
     <div class="txt rv">
       <span class="tag">Groups &amp; private hire</span>
@@ -153,7 +148,7 @@
 <section class="sec s">
   <div class="wrap">
     <div class="booked rv"><h2>Have you booked yet?</h2><div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div></div>
-    <div class="team rv">
+    <div class="team swipe rv">
       <div class="vid "><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-team-1.jpg" aria-label="A member of the Canal team at lunch"><source src="video/v-team-1.mp4" type="video/mp4"></video></div>
       <div class="vid "><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-team-2.jpg" aria-label="A member of the Canal team at lunch"><source src="video/v-team-2.mp4" type="video/mp4"></video></div>
       <div class="vid "><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-team-3.jpg" aria-label="A member of the Canal team at lunch"><source src="video/v-team-3.mp4" type="video/mp4"></video></div>
@@ -180,14 +175,13 @@
     </div>
     <div class="media rv">
       <div class="vid big"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-exterior.jpg" aria-label="The Canal canopy over the terrace and the canal"><source src="video/v-exterior.mp4" type="video/mp4"></video></div>
-      <figure class="small arch"><div class="ph"><img src="img/archive-narrowboat.jpg" alt="Archive photograph of a narrowboat on the canal" loading="lazy"></div></figure>
     </div>
   </div>
 </section>
 
 <section class="sec s ">
   <div class="wrap grid2">
-    <div class="rv"><span class="tag">Newsletter</span><h2 class="h2">Never miss a thing canal-side.</h2></div>
+    <div class="rv"><span class="tag">Newsletter</span><h2 class="h2">News from Canal</h2></div>
     <div class="rv">
       <p class="body" style="margin-bottom:18px">New menus, supper clubs, summer parties and first dibs on Christmas. Not too often, promise.</p>
       <form class="signup"><label class="sr" for="em">Email</label><input id="em" type="email" placeholder="Your email" required><button class="btn" type="submit">Subscribe</button></form>
