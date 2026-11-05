@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=18">
+<link rel="stylesheet" href="css/style.css?v=19">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -454,14 +454,19 @@ f = head("Christmas at Canal | Christmas Day Lunch & Festive Menu, Westbourne Pa
          "Christmas Day lunch (£100) and a £68 festive sharing menu at Canal on the Grand Union Canal. Christmas parties for up to 150 with the terrace.", "festive")
 f += header("festive.html")
 f += f"""
-<section class="phero xhero">
-  <div class="media"><img src="img/xmas-1.jpg" alt="Christmas Day lunch at Canal, roast duck in the middle of the table"></div>
-  <div class="in"><span class="tag" data-countdown>Christmas 2026</span><h1>Christmas at Canal.</h1></div>
+<section class="xmas-open">
+  <div class="xo-vid"><video autoplay muted loop playsinline poster="video/xmas-edit-poster.jpg" aria-label="Christmas Day at Canal"><source src="video/xmas-edit.mp4" type="video/mp4"></video></div>
+  <div class="xo-txt">
+    <span class="tag" data-countdown>Christmas 2026</span>
+    <h1>The best seat for Christmas is by the water.</h1>
+    <p class="lead">Long lunches, roast duck for the table, and the whole place lit up for parties. A place to gather, a place to indulge.</p>
+    <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas {ARR}</a><a class="btn line" href="#choices">See the options</a></div>
+  </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="choices">
   <div class="wrap">
-    <div class="kicker rv"><h2>Three ways to do it</h2><p>A place to gather, a place to indulge — by the water.</p></div>
+    <div class="kicker rv"><h2>Three ways to do it</h2><p>Book up to 30 online. Bigger than that, talk to us.</p></div>
     <div class="choices">
       {choice('£68', 'Festive sharing menu', 'For the whole table, one main chosen in advance. Lunch and dinner through December.',
               f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>', FEST_MENU)}
@@ -473,11 +478,41 @@ f += f"""
   </div>
 </section>
 
-<section class="feast" aria-label="Christmas at Canal">
-  {''.join(f'<div class="ph"><img src="img/{n}" alt="{a}" loading="lazy"></div>' for n, a in [('xmas-6.jpg','Roast duck with carrots'),('xmas-2.jpg','Christmas starters'),('festive2.jpg','Curried monkfish pie'),('xmas-8.jpg','Carving the duck'),('xmas-4.jpg','The Christmas table'),('xmas-3.jpg','Roast duck and sides')])}
+<section class="sec">
+  <div class="wrap feat">
+    <div class="txt rv">
+      <span class="tag" style="color:var(--caramel)">25 December</span>
+      <h2>Roast duck, carved at the table</h2>
+      <p class="lead">Christmas Day is one long lunch: a glass of Champagne, smoked trout and Coombeshead ham to pass around, then the duck arrives. Nobody has to cook, nobody has to wash up.</p>
+      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day</a></div>
+    </div>
+    <div class="media rv">
+      <div class="ph big"><img src="img/xmas-7.jpg" alt="Roast duck being carved at the Christmas table" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="xmas-wide">
+  <div class="vid"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-terrace-table.jpg" aria-label="A group at a long table on the terrace"><source src="video/v-terrace-table.mp4" type="video/mp4"></video></div>
+  <div class="xw-txt"><span class="tag">Christmas parties</span><p>The whole place, the water, the lights. Up to 70 seated or 150 standing with the terrace.</p><a class="btn white" href="{ENQ}" target="_blank" rel="noopener">Plan your party {ARR}</a></div>
 </section>
 
 <section class="sec">
+  <div class="wrap feat flip">
+    <div class="txt rv">
+      <span class="tag" style="color:var(--caramel)">Through December</span>
+      <h2>Short rib, monkfish pie, and a bottle for the table</h2>
+      <p class="lead">The festive sharing menu is built for catching up: everything arrives in the middle, one main for the table, brown butter cake to finish. Lunch or dinner, any day in December.</p>
+      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a festive table</a></div>
+    </div>
+    <div class="media rv">
+      {vid('v-pour', 'A bottle of wine being poured at the table', 'big')}
+      {arch('archive-barge.jpg', 'Archive photograph of a woman with a mug on a working barge in winter', '')}
+    </div>
+  </div>
+</section>
+
+<section class="sec s">
   <div class="wrap give rv">
     <div><span class="tag" style="color:var(--caramel)">Stuck for a present?</span><h2>Give Canal.</h2></div>
     <p class="lead">Digital gift vouchers for any amount, sent straight to their inbox.</p>
