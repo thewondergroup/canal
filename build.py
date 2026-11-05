@@ -184,9 +184,13 @@ def hero_media():
 
 
 # ===================================================================== HOME
-def vid(name, alt, cls=""):
-    return (f'<div class="vid {cls}"><video data-inview muted loop playsinline preload="none" poster="video/{name}.jpg" '
+def vid(name, alt, cls="", loop=True):
+    return (f'<div class="vid {cls}"><video data-inview autoplay muted {"loop " if loop else ""}playsinline preload="metadata" poster="video/{name}.jpg" '
             f'aria-label="{alt}"><source src="video/{name}.mp4" type="video/mp4"></video></div>')
+
+
+def arch(name, alt, cap):
+    return f'<figure class="small arch"><div class="ph"><img src="img/{name}" alt="{alt}" loading="lazy"></div><figcaption>{cap}</figcaption></figure>'
 
 
 h = head("Canal | Waterside Restaurant & Terrace, Westbourne Park",
@@ -197,6 +201,7 @@ h += f"""
   <div class="media">
     <video autoplay muted loop playsinline poster="video/v-wall-pasta.jpg" aria-label="A plate of pasta on the canal wall, the water moving behind"><source src="video/v-wall-pasta.mp4" type="video/mp4"></video>
     <video autoplay muted loop playsinline poster="video/v-terrace-man.jpg" aria-label="Lunch on the terrace beside the canal, seen from above"><source src="video/v-terrace-man.mp4" type="video/mp4"></video>
+    <video class="m-only" autoplay muted loop playsinline poster="video/v-terrace-table.jpg" aria-label="A group at lunch on the terrace, seen from above"><source src="video/v-terrace-table.mp4" type="video/mp4"></video>
   </div>
   <div class="center">
     <img src="img/logo-white.png" alt="Canal">
@@ -214,74 +219,95 @@ h += f"""
 <section class="intro-sec">
   <div class="wrap intro-grid">
     <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p>
-    <p class="body rv">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet. Walk in for drinks; book for food.</p>
+    <p class="body rv">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
   </div>
 </section>
 
-<section class="sec s">
-  <div class="wrap">
-    <div class="kicker rv"><h2>On the wall</h2><p>Lunch, served about a foot from the water.</p></div>
-    <div class="wall-row rv">
-      {ph('wall-crudo.jpg', 'A crudo on the canal wall')}
-      {ph('wall-langoustine.jpg', 'Langoustines on the canal wall')}
-      {ph('wall-pasta.jpg', 'A pasta dish on the canal wall')}
-      {ph('wall-toast.jpg', 'A toast on the canal wall')}
-      {ph('wall-lemon.jpg', 'A lemon and a silver coupe on the canal wall')}
-    </div>
-    <div class="btns rv" style="margin-top:28px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table</a><a class="btn line" href="menus.html">The menu</a></div>
-  </div>
-</section>
-
+<!-- What's on now -->
 <section class="sec">
-  <div class="wrap pairs-wrap">
-    <div class="kicker rv"><h2>Life on the water</h2><p>The Grand Union, then and now.</p></div>
-    <div class="pairs">
-      <figure class="pair rv">
-        <div class="ph then"><img src="img/archive-fish.jpg" alt="Archive photograph of a fisherman holding two large fish" loading="lazy"></div>
-        <div class="ph now"><img src="img/chef-fish.jpg" alt="A chef holding a whole fish over the canal" loading="lazy"></div>
-        <figcaption><span>Fish, still the main event.</span><span>Then / now</span></figcaption>
-      </figure>
-      <figure class="pair rv">
-        <div class="ph then"><img src="img/archive-tub.jpg" alt="Archive photograph of a boy paddling a tin tub on the water" loading="lazy"></div>
-        {vid('v-terrace-plates', 'Plates arriving at a terrace table by the canal', 'now')}
-        <figcaption><span>Messing about on the water.</span><span>Then / now</span></figcaption>
-      </figure>
-      <figure class="pair rv">
-        <div class="ph then"><img src="img/archive-swimmer.jpg" alt="Archive photograph of a woman waving from a rubber ring in the water" loading="lazy"></div>
-        {vid('v-terrace-drink', 'A guest with a drink on the terrace', 'now')}
-        <figcaption><span>Always sunny canal-side.</span><span>Then / now</span></figcaption>
-      </figure>
+  <div class="wrap feat">
+    <div class="txt rv">
+      <span class="tag" style="color:var(--caramel)">Now booking</span>
+      <h2>Christmas at Canal</h2>
+      <p class="lead">Long lunches and parties by the water, through the festive season and on the day itself.</p>
+      <ul class="facts">
+        <li><span>Festive sharing menu</span><span>£68 pp</span></li>
+        <li><span>Christmas Day lunch</span><span>£100 pp</span></li>
+        <li><span>Book online</span><span>Up to 30</span></li>
+        <li><span>Parties &amp; exclusive hire</span><span>Up to 150</span></li>
+      </ul>
+      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a><a class="btn line" href="festive.html">Christmas menus</a><a class="btn line" href="{ENQ}" target="_blank" rel="noopener">Party enquiries</a></div>
+    </div>
+    <div class="media rv">
+      <div class="ph big"><img src="img/xmas-5.jpg" alt="Christmas Day lunch at Canal, roast duck in the middle of the table" loading="lazy"></div>
+      {arch('archive-barge.jpg', 'Archive photograph of a woman with a mug on a working barge', 'Winter on the Grand Union.')}
     </div>
   </div>
 </section>
 
-<section class="sec s">
-  <div class="wrap">
-    <div class="kicker rv"><h2>The room</h2><p>A dining room, bar and terrace inside Mason &amp; Fifth, Westbourne Park.</p></div>
-    <div class="room rv">
-      <div class="a">{ph('room-waiter.jpg', 'The dining room at Canal')}</div>
-      {ph('bar.jpg', 'The bar and wine wall')}
-      {ph('logo-glass.jpg', 'The Canal logo on the glass by the bar')}
-      {ph('banquette.jpg', 'Banquette seating')}
-      {ph('window-table.jpg', 'A table by the window onto the terrace')}
-    </div>
-  </div>
-</section>
-
+<!-- On the menu (live from the menu sheet) -->
 <section class="sec butter">
-  <div class="wrap">
-    <div class="kicker rv"><h2>This season</h2><p>Christmas by the water, a proper bouillabaisse, and room for the whole gang.</p></div>
-    <div class="whatson">
-      <a class="rv" href="festive.html">{ph('xmas-1.jpg', 'Christmas Day lunch with roast duck at Canal')}<span class="label">Booking now</span><h3>Christmas at Canal</h3><p>A £68 festive sharing menu, Christmas Day lunch, and parties for up to 150.</p></a>
-      <a class="rv" href="menus.html#bouillabaisse">{ph('bouillabaisse.jpg', 'Bouillabaisse at Canal')}<span class="label">For the table</span><h3>Bouillabaisse</h3><p>Inspired by Marseille, served in courses. Enquire to reserve.</p></a>
-      <a class="rv" href="groups.html">{ph('spread-spring.jpg', 'A long table of sharing plates')}<span class="label">Groups &amp; events</span><h3>Private hire</h3><p>Tables of 8 and up, or the whole place — 70 seated, 120 standing.</p></a>
+  <div class="wrap feat flip">
+    <div class="txt rv">
+      <span class="tag">On the menu</span>
+      <h2>This week’s food</h2>
+      <div class="preview" data-menu-preview data-menu="food" data-sections="Snacks,Small plates,Large plates" data-per="3"></div>
+      <p class="note" style="margin:0 0 22px">The menu changes through the week. Bouillabaisse for the table is available to pre-order.</p>
+      <div class="btns"><a class="btn" href="menus.html">Full menu</a><a class="btn line" href="menus.html#bouillabaisse">Bouillabaisse</a></div>
+    </div>
+    <div class="media rv">
+      <div class="ph big"><img src="img/wall-langoustine.jpg" alt="Langoustines on the canal wall" loading="lazy"></div>
+      {arch('archive-fish.jpg', 'Archive photograph of a fisherman holding two large fish', 'Fish, still the main event.')}
     </div>
   </div>
 </section>
 
+<!-- Bar & terrace -->
+<section class="sec">
+  <div class="wrap feat">
+    <div class="txt rv">
+      <span class="tag" style="color:var(--caramel)">The bar &amp; terrace</span>
+      <h2>Just here for a drink?</h2>
+      <p class="lead">No need to book. Walk in for cocktails, wine by the glass and snacks, all day.</p>
+      <div class="preview" data-menu-preview data-menu="drinks" data-sections="Cocktails" data-per="8"></div>
+      <ul class="facts">
+        <li><span>Terrace</span><span>South-facing, part heated &amp; covered</span></li>
+        <li><span>Dogs</span><span>Welcome inside and out</span></li>
+      </ul>
+      <div class="btns"><a class="btn line" href="menus.html#drinks">Drinks list</a></div>
+    </div>
+    <div class="media rv">
+      {vid('v-pour', 'A glass of wine being poured at the table', 'big')}
+      {arch('archive-swimmer.jpg', 'Archive photograph of a woman waving from a rubber ring in the water', 'Always sunny canal-side.')}
+    </div>
+  </div>
+</section>
+
+<!-- Groups -->
+<section class="sec blush">
+  <div class="wrap feat flip">
+    <div class="txt rv">
+      <span class="tag">Groups &amp; private hire</span>
+      <h2>Bring everyone</h2>
+      <p class="lead">Big tables, part hire or the whole place, with a sharing menu built for a crowd.</p>
+      <ul class="facts">
+        <li><span>Group bookings</span><span>8 or more</span></li>
+        <li><span>Exclusive hire, seated</span><span>Up to 70</span></li>
+        <li><span>Exclusive hire, standing</span><span>Up to 120</span></li>
+      </ul>
+      <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="groups.html">Groups &amp; events</a></div>
+    </div>
+    <div class="media rv">
+      <div class="ph big land"><img src="img/spread-spring.jpg" alt="A long table of sharing plates" loading="lazy"></div>
+      {arch('archive-fishermen.jpg', 'Archive photograph of three fishermen sitting together on deck', 'Table for a crowd.')}
+    </div>
+  </div>
+</section>
+
+<!-- Staff -->
 <section class="sec s">
   <div class="wrap">
-    <div class="kicker rv"><h2>The team</h2><p>Staff lunch.</p></div>
+    <div class="kicker rv"><h2>Staff lunch</h2><p>The team, eating the menu.</p></div>
     <div class="team rv">
       {vid('v-team-1', 'A member of the Canal team at lunch')}
       {vid('v-team-2', 'A member of the Canal team at lunch')}
@@ -291,21 +317,24 @@ h += f"""
   </div>
 </section>
 
+<!-- Find us -->
 <section class="sec water">
-  <div class="wrap grid2">
-    <div class="rv">
+  <div class="wrap feat">
+    <div class="txt rv">
       <span class="tag">Find us</span>
       <p class="addr">Canal, Mason &amp; Fifth<br>11b Woodfield Road<br>Westbourne Park, W9 2BA</p>
       <ul class="hours"><li><span>Monday – Saturday</span><span>12pm – 10pm</span></li><li><span>Sunday</span><span>12pm – 8.30pm</span></li></ul>
-      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Dogs welcome.</p>
+      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station.<br>hello@canalrestaurant.com · 020 8176 6073</p>
       <div class="btns" style="margin-top:22px"><a class="btn white" href="{MAPS}" target="_blank" rel="noopener">Directions</a><a class="btn line" href="find-us.html">Getting here</a></div>
     </div>
-    <div class="rv">{vid('v-exterior', 'The Canal canopy over the terrace and the canal', 'r45')}</div>
+    <div class="media rv">
+      {vid('v-exterior', 'The Canal canopy over the terrace and the canal', 'big')}
+      {arch('archive-narrowboat.jpg', 'Archive photograph of a narrowboat on the canal', 'The Grand Union, a while back.')}
+    </div>
   </div>
 </section>
 
 {signup('')}
-{signoff()}
 """
 h += FOOT
 write("index.html", h)

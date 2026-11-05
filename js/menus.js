@@ -2,7 +2,8 @@
    Sheet columns: menu | section | item | description | price | tag   (tag: v, ve, gf — optional) */
 (function () {
   var root = document.querySelector('[data-menus]');
-  if (!root) return;
+  var previews = document.querySelectorAll('[data-menu-preview]');
+  if (!root && !previews.length) return;
   var C = window.CANAL || {};
 
   function parseCSV(text) {
@@ -60,9 +61,26 @@
     root.classList.add('loaded');
   }
 
+  function preview(items) {
+    previews.forEach(function (el) {
+      var menu = el.getAttribute('data-menu') || 'food';
+      var secs = (el.getAttribute('data-sections') || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean);
+      var per = +(el.getAttribute('data-per') || 3);
+      var html = secs.map(function (s) {
+        var rows = items.filter(function (it) { return (it.menu || 'food').toLowerCase() === menu && it.section === s; }).slice(0, per);
+        if (!rows.length) return '';
+        return '<div class="menu-sec"><h3>' + esc(s) + '</h3><ul>' + rows.map(function (it) {
+          return '<li><div><span class="mi">' + esc(it.item) + '</span>' + (it.description ? '<span class="md">' + esc(it.description) + '</span>' : '') +
+            '</div><span class="mp">' + esc(price(it.price)) + '</span></li>';
+        }).join('') + '</ul></div>';
+      }).join('');
+      el.innerHTML = html;
+    });
+  }
+
   function load(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }); }
-  var local = root.getAttribute('data-menus') || 'data/menu.csv';
+  var local = (root && root.getAttribute('data-menus')) || 'data/menu.csv';
   (C.menuSheetCsv ? load(C.menuSheetCsv).catch(function () { return load(local); }) : load(local))
-    .then(function (t) { render(parseCSV(t)); })
-    .catch(function () { root.querySelector('.menu-body').innerHTML = '<p class="body">Menus are loading slowly — see the PDFs below.</p>'; });
+    .then(function (t) { var items = parseCSV(t); if (root) render(items); if (previews.length) preview(items); })
+    .catch(function () { if (root) root.querySelector('.menu-body').innerHTML = '<p class="body">Menus are loading slowly — see the PDFs below.</p>'; });
 })();
