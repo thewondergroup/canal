@@ -379,3 +379,58 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .wide .ph{aspect-ratio:4/3}
   .live{justify-content:flex-start}
 }
+
+/* =====================================================================
+   v5 — built around their own photography
+   ===================================================================== */
+/* split video hero */
+.hero.split .media{display:grid;grid-template-columns:1fr 1fr}
+.hero.split .media video{width:100%;height:100%;object-fit:cover}
+.hero.split::after{background:linear-gradient(180deg,rgba(32,27,22,.35) 0%,rgba(32,27,22,0) 28%,rgba(32,27,22,0) 60%,rgba(32,27,22,.55) 100%)}
+.hero.split .center img{width:min(46vw,520px)}
+
+.vid{position:relative;overflow:hidden;background:#d9d2c4}
+.vid video{display:block;width:100%;height:100%;object-fit:cover}
+
+/* small editorial headings */
+.kicker{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-top:1px solid var(--line);padding-top:16px;margin-bottom:clamp(28px,4vw,48px)}
+.kicker h2{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em}
+.kicker p{font-size:14px;opacity:.6;max-width:44ch;text-align:right}
+
+/* on the wall: plate row */
+.wall-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.wall-row .ph{aspect-ratio:4/5}
+
+/* then & now */
+.pairs{display:grid;gap:clamp(56px,8vw,120px)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px);align-items:end}
+.pair .then,.pair .now{aspect-ratio:4/5}
+.pair .then img{filter:grayscale(1) contrast(1.05)}
+.pair figcaption{grid-column:1/-1;order:3;display:flex;justify-content:space-between;font-size:14px;padding-top:2px}
+.pair figcaption span:last-child{opacity:.55}
+
+.pair figure{margin:0}
+.pairs-wrap{max-width:1100px}
+
+/* the room */
+.room{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:8px}
+.room .a{grid-row:span 2}
+.room .a .ph{height:100%;aspect-ratio:auto}
+.room .ph{aspect-ratio:1}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.team .vid{aspect-ratio:9/16}
+
+@media (max-width:900px){
+  .hero.split .media{grid-template-columns:1fr}
+  .hero.split .media video:nth-child(2){display:none}
+  .wall-row{grid-template-columns:repeat(2,1fr)}
+  .wall-row .ph:last-child{display:none}
+  .room{grid-template-columns:1fr 1fr}
+  .room .a{grid-column:1/-1;grid-row:auto}
+  .room .a .ph{aspect-ratio:4/3}
+  .team{grid-template-columns:1fr 1fr}
+  .kicker{flex-direction:column}
+  .kicker p{text-align:left}
+}
