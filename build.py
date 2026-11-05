@@ -496,13 +496,13 @@ f += f"""
 
     <div class="xs-row rv">
       <div class="xs-txt"><span class="xs-n">Arrive</span><p class="xs-big">Come in off the towpath, and everything arrives at once.</p><p class="xs-small">A glass of Forget de Brimont Champagne, then soda bread and brown butter, smoked trout, Coombeshead Farm ham, Montgomery cheddar dumplings with Tunworth custard, and burrata with Todolí citrus. All for sharing.</p></div>
-      <div class="xs-media">{vid('xmas-plates-top', 'Plates passed around the Christmas table')}</div>
+      <div class="xs-media">{vid('xmas-cheers-top', 'Glasses raised over Christmas lunch')}</div>
     </div>
 
     <div class="xs-row flip rv">
       <div class="xs-txt"><span class="xs-n">Stay a while</span><p class="xs-big">Roast duck at the table, then one more glass.</p><p class="xs-small">Duck with creamed sprouts and quince, potatoes fried in duck fat, brown butter cake to finish. There’s a full vegetarian menu too. Nobody cooks, nobody washes up.</p>
         <div class="btns" style="margin-top:22px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day {ARR}</a></div></div>
-      <div class="xs-media">{vid('xmas-cheers-top', 'Glasses raised over Christmas lunch')}</div>
+      <div class="xs-media">{vid('xmas-gravy-top', 'Gravy poured over roast duck, then red wine on the table')}</div>
     </div>
   </div>
 </section>
