@@ -53,7 +53,7 @@ def has(path):
 
 
 ARR = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg>'
-NAV = [("menus.html", "Menus"), ("festive.html", "Christmas"), ("groups.html", "Groups & events"), ("find-us.html", "Find us")]
+NAV = [("index.html", "Home"), ("menus.html", "Menus"), ("festive.html", "Christmas"), ("groups.html", "Groups & events"), ("find-us.html", "Find us")]
 
 
 def ph(name, alt, cls="", cap=""):
@@ -109,7 +109,7 @@ def header(cur):
   </div>
 </header>
 <div class="menu">
-  <a class="big" href="index.html">Home</a>{mnav}<a class="big" href="faq.html">FAQs</a>
+  {mnav}<a class="big" href="faq.html">FAQs</a>
   <div class="menu-foot">
     <a class="btn" href="{BOOK}" target="_blank" rel="noopener" style="align-self:flex-start">Book a table</a>
     <a href="{GIFT}" target="_blank" rel="noopener">Gift vouchers</a>
