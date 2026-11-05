@@ -3,7 +3,6 @@
 If a site photo hasn't been added yet, a stand-in from the photos we do have is used,
 so the build always previews properly. Re-run after adding media."""
 import os
-from map_svg import MAP_SVG
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 CDN = "https://cdn.prod.website-files.com/67e6bf22004be258360f5e1b/"
@@ -84,21 +83,6 @@ def head(title, desc, slug, solid=False):
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css">
-<script>
-/* Day or evening, before paint. Evening = after today's sunset in London (or before 6am). */
-(function(){{var lat=51.5207,lng=-0.2006,d=new Date(),r=Math.PI/180;
-var n=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-.5);
-var eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
-var de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
-var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(de))-Math.tan(lat*r)*Math.tan(de))/r;
-var ss=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())+(720-4*(lng-ha)-eq)*6e4);
-var f=function(o){{return new Intl.DateTimeFormat('en-GB',Object.assign({{timeZone:'Europe/London'}},o)).format(ss)}};
-window.CANAL_SUNSET={{hhmm:f({{hour:'2-digit',minute:'2-digit',hour12:false}}),label:f({{hour:'numeric',minute:'2-digit',hour12:true}}).replace(':','.').replace(' ','').toLowerCase()}};
-var h=+new Intl.DateTimeFormat('en-GB',{{timeZone:'Europe/London',hour:'2-digit',hour12:false}}).format(d)%24;
-var m=(d>=ss||h<6)?'evening':'day';try{{var o=sessionStorage.getItem('canal-mode');if(o)m=o}}catch(e){{}}
-document.documentElement.setAttribute('data-mode',m);
-var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo==11?'winter':mo<5?'spring':mo<8?'summer':'autumn');}})();
-</script>
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -120,7 +104,6 @@ def header(cur):
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="logo" href="index.html" aria-label="Canal — home"></a>
   <div class="header-right">
-    <button class="mode" aria-label="Switch between day and evening"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="only-day">Day</span><span class="only-evening">Evening</span></button>
     <a class="small" href="{GIFT}" target="_blank" rel="noopener">Gift vouchers</a>
     <a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>
   </div>
@@ -154,7 +137,6 @@ FOOT = f"""<footer class="footer">
 <script src="js/live.js"></script>
 <script src="js/ripple.js"></script>
 <script src="js/menus.js"></script>
-<script src="js/day.js"></script>
 </body>
 </html>
 """
@@ -182,7 +164,7 @@ def signoff(line="See you canal&#8209;side."):
 """
 
 
-TICK_ITEMS = ["Splish, splash", "Always sunny canal-side", "Modern European", "South-facing terrace", "Arrive by boat",
+TICK_ITEMS = ["Splish, splash", "Always sunny canal-side", "Modern European", "South-facing terrace",
               "Dogs welcome", "Christmas Day lunch", "Bouillabaisse by the water"]
 TICKER = '<div class="ticker" aria-hidden="true"><div class="t">' + \
     "".join(f"<span>{t}<i></i></span>" for t in TICK_ITEMS * 2) + "</div></div>"
@@ -202,35 +184,6 @@ def hero_media():
 
 
 # ===================================================================== HOME
-def plate(name, alt, cls="", mark=True):
-    m = '<span class="mark"></span>' if mark else ""
-    return f'<div class="plate {cls}">{m}<div class="food"><img src="{img(name)}" alt="{alt}" loading="lazy"></div></div>'
-
-
-DAY = [
-    ("12:00", "Lunch", "Midday", "Soda bread and burrata, crab linguine, a glass of something cold. The terrace fills up first, so book a table outside.",
-     "spread.jpg", "Sharing plates at lunch", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book lunch</a>', ""),
-    ("15:30", "The long afternoon", "Afternoon", "Lunch turns into an Aperol, which turns into another. The bar and terrace don’t need a booking — just turn up.",
-     "cocktails.jpg", "Cocktails on the bar", '<a class="btn line" href="menus.html#drinks">Drinks list</a>', ""),
-    ("16:28", "Golden hour", "Sunset", "The water goes gold, then pink, and the boats light up. It faces south, so you get every last minute of it.",
-     "terrace.jpg", "A table on the terrace beside the canal at golden hour", '<a class="btn line" href="find-us.html">Find the terrace</a>', ' data-sunset'),
-    ("19:30", "Dinner by the water", "Evening", "Whole plaice, venison ragù, a bottle from somewhere you’ve never heard of. Everything’s for the table.",
-     "group.jpg", "A full table at dinner", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book dinner</a><a class="btn line" href="menus.html">The menu</a>', ""),
-    ("22:00", "One more?", "Last orders", "A Brown Butter Old Fashioned for the road. Then out along the towpath. Splish, splash.",
-     "interior.jpg", "The bar and wine wall at Canal", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table</a>', ""),
-]
-
-steps = "".join(
-    f'''<div class="step" data-time="{t}"{extra}>
-        <div class="step-img">{plate(im, alt)}</div>
-        <span class="when">{when} · {nice_t}</span>
-        <h3>{title}</h3>
-        <p>{copy}</p>
-        <div class="btns">{cta}</div>
-      </div>'''
-    for (t, title, when, copy, im, alt, cta, extra), nice_t in zip(DAY, ["12pm", "3.30pm", "4.28pm", "7.30pm", "10pm"]))
-plate_imgs = "".join(f'<img src="{img(d[4])}" alt="{d[5]}">' for d in DAY)
-
 h = head("Canal | Waterside Restaurant & Terrace, Westbourne Park",
          "Canal is a modern European restaurant on the Grand Union Canal at Westbourne Park, with a sun-soaked south-facing terrace, seasonal menus and cocktails by the water.", "")
 h += header("index.html")
@@ -243,65 +196,46 @@ h += f"""
   </div>
   <div class="foot">
     <div>
-      <p style="margin-bottom:18px"><span class="only-day">Lunch on the terrace, right on the water.</span><span class="only-evening">Dinner by the water, until late.</span></p>
+      <p style="margin-bottom:18px">A waterside restaurant led by the seasons.</p>
       <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a><a class="btn line" href="menus.html">Our menus</a></div>
     </div>
-    <div class="live" data-live aria-live="polite"><span class="live-item">Mon – Sat 12 – 10pm · Sun 12 – 8.30pm</span></div>
+    <div class="live" data-live aria-live="polite"><span class="live-item">Mon – Sat 12 – 10pm</span><span class="live-item">Sun 12 – 8.30pm</span></div>
   </div>
 </section>
 {TICKER}
 
 <section class="intro-sec">
+  <div class="wrap intro-grid">
+    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p>
+    <p class="body rv">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet. Walk in for drinks; book for food.</p>
+  </div>
+</section>
+
+<section class="wide rv">
+  {ph('og.jpg', 'A table on the terrace beside the Grand Union Canal')}
+  <div class="caption"><span>The terrace</span><span>Grand Union Canal, W9</span></div>
+</section>
+
+<section class="sec">
   <div class="wrap">
-    <span class="tag rv" style="color:var(--caramel)">A place to escape, a place to indulge</span>
-    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union. A <em>sun-soaked terrace</em>, a menu that follows the seasons — and whatever the weather, it’s <em>always sunny canal-side.</em></p>
-  </div>
-</section>
-
-<section class="day" data-step="0" aria-label="A day at Canal">
-  <div class="wrap day-head">
-    <span class="tag rv" style="color:var(--d-acc)">A day at Canal</span>
-    <h2 class="h2 rv">From lunch in the sun to last orders.</h2>
-  </div>
-  <div class="wrap day-grid">
-    <div class="day-visual" aria-hidden="true">
-      <div class="day-clock">12:00</div>
-      <div class="plate day-plate"><span class="mark"></span><div class="food">{plate_imgs}</div></div>
-    </div>
-    <div class="day-steps">
-      {steps}
+    <div class="three offset">
+      <figure class="rv">{ph('spread.jpg', 'Sharing plates at lunch')}<figcaption><span>Lunch</span><span>From 12</span></figcaption></figure>
+      <figure class="rv">{ph('cocktails.jpg', 'Cocktails at the bar')}<figcaption><span>The bar &amp; terrace</span><span>All afternoon</span></figcaption></figure>
+      <figure class="rv">{ph('group.jpg', 'A full table at dinner')}<figcaption><span>Dinner</span><span>Until 10</span></figcaption></figure>
     </div>
   </div>
 </section>
-
-<div class="wave"></div>
 
 <section class="sec butter">
   <div class="wrap">
-    <div class="grid2" style="margin-bottom:64px;align-items:end">
-      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">On the table this season.</h2></div>
+    <div class="grid2" style="margin-bottom:56px;align-items:end">
+      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">This season.</h2></div>
       <p class="body rv">Christmas by the water, a proper Marseille bouillabaisse, and room for the whole gang.</p>
     </div>
-    <div class="table-top">
-      <a class="dish rv" href="festive.html">
-        {plate('xmas-1.jpg', 'Christmas Day lunch with roast duck at Canal')}
-        <h3>Christmas at Canal</h3>
-        <span class="pill">Booking now</span>
-        <p>£68 festive sharing menu, a £100 Christmas Day lunch, and parties for up to 150.</p>
-        <span class="arrow">Festive menus {ARR}</span>
-      </a>
-      <a class="dish rv" href="menus.html#bouillabaisse">
-        {plate('bouillabaisse.jpg', 'Bouillabaisse at Canal', 'oval')}
-        <h3>Bouillabaisse by the water</h3>
-        <p>Inspired by Marseille, served for the table. Arrive by boat or on foot — enquire to reserve.</p>
-        <span class="arrow">The bouillabaisse {ARR}</span>
-      </a>
-      <a class="dish rv" href="groups.html">
-        {plate('schnitzel.jpg', 'Chicken schnitzel at Canal')}
-        <h3>Groups &amp; private hire</h3>
-        <p>Tables of 8+, part or exclusive hire — up to 70 seated or 120 standing, terrace included.</p>
-        <span class="arrow">Plan an event {ARR}</span>
-      </a>
+    <div class="whatson">
+      <a class="rv" href="festive.html">{ph('festive2.jpg', 'Curried monkfish pie and short rib from the festive menu')}<span class="label">Booking now</span><h3>Christmas at Canal</h3><p>A £68 festive sharing menu, Christmas Day lunch, and parties for up to 150.</p></a>
+      <a class="rv" href="menus.html#bouillabaisse">{ph('bouillabaisse.jpg', 'Bouillabaisse at Canal')}<span class="label">For the table</span><h3>Bouillabaisse</h3><p>Inspired by Marseille, served in courses. Enquire to reserve.</p></a>
+      <a class="rv" href="groups.html">{ph('interior.jpg', 'The bar and wine wall at Canal')}<span class="label">Groups &amp; events</span><h3>Private hire</h3><p>Tables of 8 and up, or the whole place — 70 seated, 120 standing.</p></a>
     </div>
   </div>
 </section>
@@ -310,7 +244,7 @@ h += f"""
   <div class="wrap">
     <div class="grid2" style="margin-bottom:44px;align-items:end">
       <div class="rv"><span class="tag" style="color:var(--mustard)">Christmas Day 2026</span><h2 class="h2">Roast duck, passed plates, a glass of Champagne.</h2></div>
-      <div class="rv"><p class="body muted" style="margin-bottom:22px">Christmas Day lunch at Canal: £100 a head, everything to share, the canal outside. Tables are going.</p>
+      <div class="rv"><p class="body muted" style="margin-bottom:22px">Christmas Day lunch at Canal: £100 a head, everything to share, the canal outside.</p>
         <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day</a><a class="btn line" href="festive.html#christmas-day">See the menu</a></div></div>
     </div>
     <div class="reels rv">
@@ -328,15 +262,14 @@ h += f"""
       <span class="tag">Find us</span>
       <p class="addr">Canal, Mason &amp; Fifth<br>11b Woodfield Road<br>Westbourne Park, W9 2BA</p>
       <ul class="hours"><li><span>Monday – Saturday</span><span>12pm – 10pm</span></li><li><span>Sunday</span><span>12pm – 8.30pm</span></li></ul>
-      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Come by boat and tell us when you book. Dogs welcome, paws on the floor.</p>
+      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Dogs welcome.</p>
       <div class="btns" style="margin-top:22px"><a class="btn white" href="{MAPS}" target="_blank" rel="noopener">Directions</a><a class="btn line" href="find-us.html">Getting here</a></div>
     </div>
-    <div class="rv" style="display:flex;justify-content:center">{plate('octopus.jpg', 'Octopus with white beans and egg yolk', '', True).replace('class="plate ', 'style="width:min(100%,480px)" class="plate ')}</div>
+    <div class="rv">{ph('art-wall.jpg', 'The dining room at Canal', 'r45')}</div>
   </div>
-  <div class="wrap"><div class="map-wrap rv"><div class="map-scroll">{MAP_SVG}</div></div></div>
 </section>
 
-{signup()}
+{signup('')}
 {signoff()}
 """
 h += FOOT
@@ -359,7 +292,6 @@ m += f"""
       <p class="body muted rv">Menus change through the week, so these are the latest versions. Vegetarian, vegan and gluten-free options are always on. Tell us about allergies when you book. A discretionary 13.5% service charge is added.</p>
     </div>
     <div id="menu" class="menu-card rv" data-menus="data/menu.csv">
-      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#8B2E2A" stroke-width="3.5" stroke-dasharray="180 8 30 12 40" opacity=".55"/><circle cx="52" cy="48" r="38" fill="none" stroke="#8B2E2A" stroke-width="1.2" opacity=".35"/></svg>
       <img class="card-logo" src="img/logo-ink.png" alt="Canal">
       <span class="card-sub spaced">Westbourne Park</span>
       <div class="menu-tabs" role="tablist"></div>
@@ -390,7 +322,7 @@ m += f"""
     <div class="rv">
       <span class="tag">Bouillabaisse by the water</span>
       <h2 class="h2">Southern France, Westbourne Park.</h2>
-      <p class="body">Inspired by Marseille: a saffron broth, the day’s fish, rouille and toasted bread, served in courses and made for a long afternoon. Visit by canal boat or on foot.</p>
+      <p class="body">Inspired by Marseille: a saffron broth, the day’s fish, rouille and toasted bread, served in courses and made for a long afternoon.</p>
       <p class="body">Prepared for the table and booked in advance — enquire and we’ll confirm your date.</p>
       <div class="btns" style="margin-top:26px"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire now</a><a class="btn line" href="{pdf('bouillabaisse')}" target="_blank" rel="noopener">The menu</a></div>
     </div>
@@ -590,7 +522,7 @@ write("groups.html", g)
 
 # ===================================================================== FIND US
 fu = head("Find Us | Canal, 11b Woodfield Road, Westbourne Park W9",
-          "Canal is at Mason & Fifth, 11b Woodfield Road, London W9 2BA, on the Grand Union Canal — two minutes from Westbourne Park station. Hours, directions, arriving by boat.", "find-us")
+          "Canal is at Mason & Fifth, 11b Woodfield Road, London W9 2BA, on the Grand Union Canal — two minutes from Westbourne Park station. Opening hours and directions.", "find-us")
 fu += header("find-us.html")
 fu += f"""
 <section class="phero">
@@ -612,11 +544,10 @@ fu += f"""
 <section class="sec">
   <div class="wrap">
     <h2 class="h2 rv" style="margin-bottom:10px">Getting here.</h2>
-    <p class="body muted rv">On foot, by tube, or by boat.</p>
-    <div class="map-wrap rv" style="margin:36px 0 56px"><div class="map-scroll">{MAP_SVG}</div></div>
+    <p class="body muted rv" style="margin-bottom:44px">Two minutes from Westbourne Park station.</p>
     <div class="info rv">
       <div><h3>Tube</h3><p>Westbourne Park (Circle, Hammersmith &amp; City) is two minutes away. Royal Oak and Ladbroke Grove about ten.</p></div>
-      <div><h3>Boat</h3><p>We’re right on the Grand Union. Moor up on the towpath and walk in — tell us when you book.</p></div>
+      <div><h3>Just for a drink</h3><p>The bar and terrace are open all day. No booking needed.</p></div>
       <div><h3>Towpath</h3><p>Walk or cycle along the canal from Little Venice (15 minutes) or Ladbroke Grove.</p></div>
       <div><h3>Step-free</h3><p>Restaurant and terrace are step-free with accessible facilities. Just let us know what would help.</p></div>
       <div><h3>Dogs</h3><p>Welcome inside and out. Paws on the floor.</p></div>

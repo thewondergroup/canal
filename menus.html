@@ -13,21 +13,6 @@
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css">
-<script>
-/* Day or evening, before paint. Evening = after today's sunset in London (or before 6am). */
-(function(){var lat=51.5207,lng=-0.2006,d=new Date(),r=Math.PI/180;
-var n=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-.5);
-var eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
-var de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
-var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(de))-Math.tan(lat*r)*Math.tan(de))/r;
-var ss=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())+(720-4*(lng-ha)-eq)*6e4);
-var f=function(o){return new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:'Europe/London'},o)).format(ss)};
-window.CANAL_SUNSET={hhmm:f({hour:'2-digit',minute:'2-digit',hour12:false}),label:f({hour:'numeric',minute:'2-digit',hour12:true}).replace(':','.').replace(' ','').toLowerCase()};
-var h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hour12:false}).format(d)%24;
-var m=(d>=ss||h<6)?'evening':'day';try{var o=sessionStorage.getItem('canal-mode');if(o)m=o}catch(e){}
-document.documentElement.setAttribute('data-mode',m);
-var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo==11?'winter':mo<5?'spring':mo<8?'summer':'autumn');})();
-</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -43,7 +28,6 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="logo" href="index.html" aria-label="Canal — home"></a>
   <div class="header-right">
-    <button class="mode" aria-label="Switch between day and evening"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="only-day">Day</span><span class="only-evening">Evening</span></button>
     <a class="small" href="https://canalrestaurant.giftpro.co.uk/" target="_blank" rel="noopener">Gift vouchers</a>
     <a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book</a>
   </div>
@@ -61,7 +45,7 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
   <div class="media"><img src="img/hero-poster.jpg" alt="Dishes on the table at Canal"></div>
   <div class="in"><span class="tag">Our menus</span><h1>Led by the seasons.</h1></div>
 </section>
-<div class="ticker" aria-hidden="true"><div class="t"><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Arrive by boat<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Arrive by boat<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span></div></div>
+<div class="ticker" aria-hidden="true"><div class="t"><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span></div></div>
 <section class="sec">
   <div class="wrap">
     <div class="grid2 top" style="margin-bottom:60px">
@@ -69,7 +53,6 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
       <p class="body muted rv">Menus change through the week, so these are the latest versions. Vegetarian, vegan and gluten-free options are always on. Tell us about allergies when you book. A discretionary 13.5% service charge is added.</p>
     </div>
     <div id="menu" class="menu-card rv" data-menus="data/menu.csv">
-      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#8B2E2A" stroke-width="3.5" stroke-dasharray="180 8 30 12 40" opacity=".55"/><circle cx="52" cy="48" r="38" fill="none" stroke="#8B2E2A" stroke-width="1.2" opacity=".35"/></svg>
       <img class="card-logo" src="img/logo-ink.png" alt="Canal">
       <span class="card-sub spaced">Westbourne Park</span>
       <div class="menu-tabs" role="tablist"></div>
@@ -100,7 +83,7 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
     <div class="rv">
       <span class="tag">Bouillabaisse by the water</span>
       <h2 class="h2">Southern France, Westbourne Park.</h2>
-      <p class="body">Inspired by Marseille: a saffron broth, the day’s fish, rouille and toasted bread, served in courses and made for a long afternoon. Visit by canal boat or on foot.</p>
+      <p class="body">Inspired by Marseille: a saffron broth, the day’s fish, rouille and toasted bread, served in courses and made for a long afternoon.</p>
       <p class="body">Prepared for the table and booked in advance — enquire and we’ll confirm your date.</p>
       <div class="btns" style="margin-top:26px"><a class="btn" href="https://hamrestaurants.tripleseat.com/party_request/43999" target="_blank" rel="noopener">Enquire now</a><a class="btn line" href="https://cdn.prod.website-files.com/67e6bf22004be258360f5e1b/69c29b1b239aa25f83ca2978_Boullibaisse%20Menu.pdf" target="_blank" rel="noopener">The menu</a></div>
     </div>
@@ -141,6 +124,5 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
 <script src="js/live.js"></script>
 <script src="js/ripple.js"></script>
 <script src="js/menus.js"></script>
-<script src="js/day.js"></script>
 </body>
 </html>

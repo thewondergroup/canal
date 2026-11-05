@@ -13,21 +13,6 @@
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css">
-<script>
-/* Day or evening, before paint. Evening = after today's sunset in London (or before 6am). */
-(function(){var lat=51.5207,lng=-0.2006,d=new Date(),r=Math.PI/180;
-var n=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-.5);
-var eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
-var de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
-var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(de))-Math.tan(lat*r)*Math.tan(de))/r;
-var ss=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())+(720-4*(lng-ha)-eq)*6e4);
-var f=function(o){return new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:'Europe/London'},o)).format(ss)};
-window.CANAL_SUNSET={hhmm:f({hour:'2-digit',minute:'2-digit',hour12:false}),label:f({hour:'numeric',minute:'2-digit',hour12:true}).replace(':','.').replace(' ','').toLowerCase()};
-var h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hour12:false}).format(d)%24;
-var m=(d>=ss||h<6)?'evening':'day';try{var o=sessionStorage.getItem('canal-mode');if(o)m=o}catch(e){}
-document.documentElement.setAttribute('data-mode',m);
-var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo==11?'winter':mo<5?'spring':mo<8?'summer':'autumn');})();
-</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -43,7 +28,6 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="logo" href="index.html" aria-label="Canal — home"></a>
   <div class="header-right">
-    <button class="mode" aria-label="Switch between day and evening"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="only-day">Day</span><span class="only-evening">Evening</span></button>
     <a class="small" href="https://canalrestaurant.giftpro.co.uk/" target="_blank" rel="noopener">Gift vouchers</a>
     <a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book</a>
   </div>
@@ -95,6 +79,5 @@ var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo
 <script src="js/live.js"></script>
 <script src="js/ripple.js"></script>
 <script src="js/menus.js"></script>
-<script src="js/day.js"></script>
 </body>
 </html>
