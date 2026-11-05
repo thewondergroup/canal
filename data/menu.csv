@@ -1,0 +1,56 @@
+menu,section,item,description,price,tag
+food,Snacks,Soda bread,brown butter,5.5,v
+food,Snacks,Fried gordal olives,confit garlic mayonnaise,7,v
+food,Snacks,Pickled autumn vegetables,,7,ve
+food,Snacks,Fried squid bun,tartare sauce,7,
+food,Snacks,Gilda,,7 each,
+food,Snacks,Mussel toast,"parsley butter, lardo",8,
+food,Snacks,Whipped pumpkin,"balsamic, figs",9.5,v
+food,Small plates,Roast beetroot,"goat's curd, toasted walnuts",12,v
+food,Small plates,Burrata,"Todolí citrus, toasted hazelnuts",16,v
+food,Small plates,Jamón,"Stilton, sultana dressing, radicchio, pear",18,
+food,Small plates,Bluefin tuna crudo,"coriander, chilli oil",18,
+food,Small plates,The table cheeseburger,,14,
+food,Large plates,Crown Prince squash risotto,"chestnut, Parmesan",19,v
+food,Large plates,Wild seabass,"Jerusalem artichoke, bok choy",24,
+food,Large plates,Whole plaice,Café de Paris butter,24,
+food,Large plates,Portland crab linguine,"chilli, garlic",26,
+food,Large plates,Venison ragù,"Parmesan polenta, salsa verde",26,
+food,Large plates,Chicken schnitzel,"wholegrain mustard beurre blanc, confit mushroom",27,
+food,Sides,Green salad,,7,ve
+food,Sides,Fries,,7,ve
+food,Desserts,Madeleines,lemon curd (×3),9,v
+food,Desserts,Brown butter cake,"plum jam, crème fraîche",10,v
+food,Desserts,Tiramisu,,10,v
+drinks,Cocktails,Brown Butter Old Fashioned,,14,
+drinks,Cocktails,Olive Oil Negroni,,14,
+drinks,Cocktails,Gin / Vodka Martini,,14,
+drinks,Cocktails,Bergamot Martini,,14,
+drinks,Cocktails,Tonka Espresso Martini,,14,
+drinks,Cocktails,Citrus Margarita,,14,
+drinks,Cocktails,Aperol Spritz,,14,
+drinks,Cocktails,Campari Spritz,,14,
+drinks,Beer & cider,Unity Lager 4.5%,"Coalition Brewery, draught · pint / half",7.5 / 5,
+drinks,Beer & cider,Signal Tropical Session IPA 4.2%,"Coalition Brewery, draught · pint / half",7.5 / 5,
+drinks,Beer & cider,Dennis Hopp'r IPA 5.3%,"Mondo, 330ml",7,
+drinks,Beer & cider,Nico Köln Lager 4.8%,"Orbit, 330ml · gluten free",7,
+drinks,Beer & cider,Dry Craft Cider 4.4%,"Kicking Goat, 500ml",7,
+drinks,Beer & cider,Lucky Saint Unfiltered Lager 0.5%,330ml,7,
+drinks,Beer & cider,Lucky Saint IPA 0.5%,330ml,7,
+drinks,Sparkling by the glass,"Pet Nat Bianco, Jasci & Marcesani","Abruzzo, Italy · NV · 125ml / bottle",13 / 68,
+drinks,Sparkling by the glass,"Des Bulles, Olivier Cohen","Languedoc, France · 2024 · sparkling rosé · 125ml / bottle",16.5 / 85,
+drinks,Sparkling by the glass,"Champagne Eric Taillet, Egalité Brut","Champagne, France · NV · 125ml / bottle",18 / 95,
+drinks,White by the glass,"Domus Agredo Bianco","Veneto, Italy · NV · 125ml / 500ml / bottle",8 / 30 / 40,
+drinks,White by the glass,"Sauvignon Blanc, Les Deux Moulins","Loire, France · 2024",9 / 40 / 50,
+drinks,White by the glass,"Vinho Verde Fresco, Adega de Monção","Minho, Portugal · 2024",10 / 42 / 53,
+drinks,White by the glass,"A Pedreira Albariño, Bodegas Fulcro","Rías Baixas, Spain · 2025",14 / 56 / 76,
+drinks,White by the glass,"Chardonnay, Vignoble Guillaume","Franche-Comté, France · 2023",15 / 60 / 81,
+drinks,White by the glass,"Michi's Farm Orange, Gindl","Weinviertel, Austria · NV · skin contact",14.5 / 58 / 76,
+drinks,Rosé by the glass,"Bergerie de la Bastide","Languedoc, France · 2024",7 / 28 / 40,
+drinks,Rosé by the glass,"Rosé, Malinga","Kamptal, Austria · 2023",15 / 59 / 80,
+drinks,Red by the glass,"Domus Agredo Rosso","Veneto, Italy · NV",8 / 30 / 40,
+drinks,Red by the glass,"Syrah Salamandre, Domaine St Cyrgues","Costières de Nîmes, France · 2024",10 / 40 / 52,
+drinks,Red by the glass,"'Artù', Fattoria San Lorenzo","Marche, Italy · 2021",13 / 50 / 67,
+drinks,Red by the glass,"Beaujolais Villages Nature, Le Grappin","Beaujolais, France · 2023 · served chilled",14 / 55 / 73,
+drinks,Sweet,"Tokaji Sweet Cuvée, Bodvin","Tokaj, Hungary · 2022 · 75ml / 50cl",9 / 55,
+drinks,Sweet,"Liqueur Muscat, Stanton & Killeen","Rutherglen, Australia · NV · 75ml / 37.5cl",12 / 72,
