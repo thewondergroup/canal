@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=13">
+<link rel="stylesheet" href="css/style.css?v=14">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -234,14 +234,17 @@ h += f"""
 </section>
 
 <!-- Menus -->
-<section class="sec s menus-band">
-  <div class="wrap">
-    <span class="tag rv" style="color:var(--caramel)">Menus</span>
-    <div class="menu-links rv">
-      <a href="menus.html"><span class="t">Food menu</span><span class="s">Lunch &amp; dinner, changes through the week</span>{ARR}</a>
-      <a href="menus.html#drinks"><span class="t">Wine &amp; drinks</span><span class="s">Cocktails, beer, wine by the glass</span>{ARR}</a>
-      <a href="festive.html"><span class="t">Christmas menus</span><span class="s">Festive menu &amp; Christmas Day</span>{ARR}</a>
+<section class="sec s">
+  <div class="wrap menu-panel-grid rv">
+    <div class="tex-panel">
+      <span class="eyebrow">Our menus</span>
+      <a href="menus.html">Food menu</a>
+      <span class="slash" aria-hidden="true"></span>
+      <a href="menus.html#drinks">Wine &amp; drinks</a>
+      <span class="slash" aria-hidden="true"></span>
+      <a href="festive.html">Christmas</a>
     </div>
+    {ph('schnitzel.jpg', 'Chicken schnitzel with fries and a glass of white')}
   </div>
 </section>
 
