@@ -236,7 +236,7 @@ h += f"""
 <!-- Menus -->
 <section class="menu-reveal" data-reveal>
   <div class="wrap">
-    <div class="top rv"><span><span data-today>Today’s menu</span></span><span>Changes through the week</span></div>
+    <div class="top rv"><span>Sample menus</span><span>Changes through the week</span></div>
     <a class="mr-row rv" href="menus.html" data-img="img/wall-crudo.jpg"><span class="w">Food</span><span class="m">Lunch &amp; dinner, mostly for sharing</span><img class="thumb" src="img/wall-crudo.jpg" alt="">{ARR}</a>
     <a class="mr-row rv" href="menus.html#drinks" data-img="img/cocktails.jpg"><span class="w">Drinks</span><span class="m">Cocktails, beer &amp; wine by the glass</span><img class="thumb" src="img/cocktails.jpg" alt="">{ARR}</a>
     <a class="mr-row rv" href="festive.html" data-img="img/festive2.jpg"><span class="w">Christmas</span><span class="m">Festive sharing menu &amp; Christmas Day</span><img class="thumb" src="img/festive2.jpg" alt="">{ARR}</a>
@@ -374,7 +374,7 @@ m += f"""
 <section class="sec note-sec">
   <div class="wrap note-grid">
     <div id="menu" class="note-menu" data-menus="data/menu.csv">
-      <p class="note-date"><span data-today>Today’s menu</span></p>
+      <p class="note-date">Sample menu</p>
       <div class="menu-tabs" role="tablist"></div>
       <div class="menu-body"></div>
       <p class="note-fine">v vegetarian // ve vegan<br>Discretionary 13.5% service // £1pp for unlimited filtered water<br>Please tell us about any allergies when you book.</p>
