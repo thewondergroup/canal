@@ -659,3 +659,19 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .xo-vid{height:78svh}
   .xo-txt{padding:48px var(--g) 60px}
 }
+
+/* v15: Christmas photo cards */
+.xcards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px);align-items:start}
+.xcard{display:flex;flex-direction:column}
+.xc-media{position:relative;aspect-ratio:3/4;overflow:hidden;background:#2a2420}
+.xc-media img,.xc-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.xcard:hover .xc-media img,.xcard:hover .xc-media video{transform:scale(1.04)}
+.xc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,18,15,0) 45%,rgba(22,18,15,.75))}
+.xc-over{position:absolute;z-index:2;left:22px;right:22px;bottom:20px;color:#fff}
+.xc-over .big-num{color:#fff;margin-bottom:6px}
+.xc-over h3{font-size:clamp(22px,2vw,28px);letter-spacing:-.02em}
+.xcard p{font-size:16px;opacity:.78;max-width:36ch;margin:18px 0}
+@media (max-width:900px){
+  .xcards.swipe > .xcard{flex:0 0 82%;scroll-snap-align:start}
+  .xcards.swipe{margin:0 calc(-1 * var(--g));padding:0 var(--g);scroll-padding-left:var(--g)}
+}

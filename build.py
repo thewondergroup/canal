@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=19">
+<link rel="stylesheet" href="css/style.css?v=20">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -431,6 +431,15 @@ m += FOOT
 write("menus.html", m)
 
 # ===================================================================== FESTIVE
+def xcard(media, big, label, line, cta_html, menu_html):
+    return f"""<div class="xcard rv">
+      <div class="xc-media">{media}<div class="xc-over"><span class="big-num">{big}</span><h3>{label}</h3></div></div>
+      <p>{line}</p>
+      <div class="btns">{cta_html}</div>
+      <details class="see"><summary>See the menu</summary><div class="dishes one">{menu_html}</div></details>
+    </div>"""
+
+
 def choice(big, label, line, cta_html, menu_html):
     return f"""<div class="choice rv">
       <span class="big-num">{big}</span>
@@ -467,27 +476,16 @@ f += f"""
 <section class="sec" id="choices">
   <div class="wrap">
     <div class="kicker rv"><h2>Three ways to do it</h2><p>Book up to 30 online. Bigger than that, talk to us.</p></div>
-    <div class="choices">
-      {choice('£68', 'Festive sharing menu', 'For the whole table, one main chosen in advance. Lunch and dinner through December.',
-              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>', FEST_MENU)}
-      {choice('£100', 'Christmas Day lunch', 'Champagne to start, plates to pass, roast duck in the middle of it all.',
-              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the 25th</a><a class="btn line" href="{pdf("xmasveg")}" target="_blank" rel="noopener">Vegetarian</a>', XMAS_MENU)}
-      {choice('150', 'Parties', 'Seated or standing, the whole place and the terrace, all lit up.',
-              f'<a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf("brochure")}" target="_blank" rel="noopener">Brochure</a>', PARTY_MENU)}
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">25 December</span>
-      <h2>Roast duck, carved at the table</h2>
-      <p class="lead">Christmas Day is one long lunch: a glass of Champagne, smoked trout and Coombeshead ham to pass around, then the duck arrives. Nobody has to cook, nobody has to wash up.</p>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/xmas-7.jpg" alt="Roast duck being carved at the Christmas table" loading="lazy"></div>
+    <div class="xcards swipe">
+      {xcard('<img src="img/festive2.jpg" alt="Curried monkfish pie, short rib, fries and winter leaves" loading="lazy">', '£68', 'Festive sharing menu',
+             'Short rib or monkfish pie for the table, brown butter cake to finish. Lunch and dinner through December.',
+             f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>', FEST_MENU)}
+      {xcard('<img src="img/xmas-7.jpg" alt="Roast duck carved at the Christmas table" loading="lazy">', '£100', 'Christmas Day',
+             'Champagne to start, plates to pass, roast duck in the middle. Nobody cooks, nobody washes up.',
+             f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the 25th</a><a class="btn line" href="{pdf("xmasveg")}" target="_blank" rel="noopener">Vegetarian</a>', XMAS_MENU)}
+      {xcard('<video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-pour.jpg" aria-label="Wine being poured"><source src="video/v-pour.mp4" type="video/mp4"></video>', '150', 'Parties for up to 150 guests',
+             'Seated or standing, the whole place and the terrace, all lit up.',
+             f'<a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf("brochure")}" target="_blank" rel="noopener">Brochure</a>', PARTY_MENU)}
     </div>
   </div>
 </section>
@@ -495,21 +493,6 @@ f += f"""
 <section class="xmas-wide">
   <div class="vid"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-terrace-table.jpg" aria-label="A group at a long table on the terrace"><source src="video/v-terrace-table.mp4" type="video/mp4"></video></div>
   <div class="xw-txt"><span class="tag">Christmas parties</span><p>The whole place, the water, the lights. Up to 70 seated or 150 standing with the terrace.</p><a class="btn white" href="{ENQ}" target="_blank" rel="noopener">Plan your party {ARR}</a></div>
-</section>
-
-<section class="sec">
-  <div class="wrap feat flip">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">Through December</span>
-      <h2>Short rib, monkfish pie, and a bottle for the table</h2>
-      <p class="lead">The festive sharing menu is built for catching up: everything arrives in the middle, one main for the table, brown butter cake to finish. Lunch or dinner, any day in December.</p>
-      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a festive table</a></div>
-    </div>
-    <div class="media rv">
-      {vid('v-pour', 'A bottle of wine being poured at the table', 'big')}
-      {arch('archive-barge.jpg', 'Archive photograph of a woman with a mug on a working barge in winter', '')}
-    </div>
-  </div>
 </section>
 
 <section class="sec s">
