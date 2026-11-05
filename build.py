@@ -218,7 +218,8 @@ h += f"""
 
 <section class="intro-sec">
   <div class="wrap intro-grid">
-    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p>
+    <div><p class="splish rv">Splish, splash</p>
+    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p></div>
     <div class="rv"><p class="body" style="margin-bottom:22px">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
       <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div></div>
   </div>
@@ -255,6 +256,22 @@ h += f"""
   </div>
 </section>
 
+<!-- Bouillabaisse -->
+<section class="sec butter">
+  <div class="wrap feat flip">
+    <div class="txt rv">
+      <span class="tag">For the table</span>
+      <h2>Bouillabaisse by the water</h2>
+      <p class="lead">Inspired by Marseille, Canal’s bouillabaisse brings southern France to Westbourne Park. Booked ahead for the table.</p>
+      <div class="btns"><a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="menus.html#bouillabaisse">View menu</a></div>
+    </div>
+    <div class="media rv">
+      <div class="ph big land"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse served at the table" loading="lazy"></div>
+      {arch('archive-coracle.jpg', 'Archive photograph of a man and two children in a small boat', '')}
+    </div>
+  </div>
+</section>
+
 <!-- Groups -->
 <section class="sec blush">
   <div class="wrap feat flip">
@@ -287,6 +304,12 @@ h += f"""
       {vid('v-team-4', 'A member of the Canal team at lunch')}
     </div>
   </div>
+</section>
+
+<!-- Instagram -->
+<section class="ig" aria-label="Canal on Instagram">
+  <div class="wrap ig-head"><a href="{INSTA}" target="_blank" rel="noopener">@canal.canal.canal</a><span>Instagram</span></div>
+  <div class="ig-track"><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/plate-logo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-crudo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/mural.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/crudo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-toast.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/olives.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/schnitzel.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/archive-tub.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-lemon.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/art-wall.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/crudo-plate.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/archive-swimmer.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/plate-logo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-crudo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/mural.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/crudo.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-toast.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/olives.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/schnitzel.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/archive-tub.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/wall-lemon.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/art-wall.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/crudo-plate.jpg" alt="" loading="lazy"></a><a href="{INSTA}" target="_blank" rel="noopener" tabindex="-1"><img src="img/archive-swimmer.jpg" alt="" loading="lazy"></a></div>
 </section>
 
 <!-- Find us -->

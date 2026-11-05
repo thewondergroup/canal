@@ -497,3 +497,17 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 .booked h2{font-size:clamp(40px,6vw,88px);letter-spacing:-.05em;line-height:.92}
 @media (max-width:900px){.services{grid-template-columns:1fr}.booked{flex-direction:column;align-items:flex-start}}
 .hero.split .media video{object-position:center 72%}
+
+/* instagram strip (scrolling, like their current site) */
+.ig{padding:clamp(60px,7vw,100px) 0;overflow:hidden}
+.ig-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.ig-head a{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.02em}
+.ig-head span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.ig-track{display:flex;gap:10px;width:max-content;animation:igloop 70s linear infinite}
+.ig:hover .ig-track{animation-play-state:paused}
+.ig-track a{display:block;width:clamp(200px,20vw,290px);aspect-ratio:4/5;overflow:hidden;flex:none}
+.ig-track img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.ig-track a:hover img{transform:scale(1.04)}
+@keyframes igloop{to{transform:translateX(calc(-50% - 5px))}}
+@media (prefers-reduced-motion:reduce){.ig-track{animation:none}}
+.splish{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:22px}
