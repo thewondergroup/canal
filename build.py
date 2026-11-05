@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=27">
+<link rel="stylesheet" href="css/style.css?v=28">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -464,13 +464,13 @@ f += f"""
   <div class="wrap">
     <div class="kicker rv"><h2>Three ways to do it</h2><p>Book up to 30 online. Bigger than that, talk to us.</p></div>
     <div class="xcards swipe">
-      {xcard('<img src="img/festive2.jpg" alt="Curried monkfish pie, short rib, fries and winter leaves" loading="lazy">', '£68', 'Festive sharing menu',
+      {xcard('<img src="img/festive2.jpg" alt="Curried monkfish pie, short rib, fries and winter leaves" loading="lazy">', '£68pp', 'Festive sharing menu',
              'Short rib or monkfish pie for the table, brown butter cake to finish. Lunch and dinner through December.',
              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>', FEST_MENU)}
-      {xcard('<img src="img/xmas-7.jpg" alt="Roast duck carved at the Christmas table" loading="lazy">', '£100', 'Christmas Day',
+      {xcard('<img src="img/xmas-7.jpg" alt="Roast duck carved at the Christmas table" loading="lazy">', '£100pp', 'Christmas Day',
              'Champagne to start, plates to pass, roast duck in the middle. Nobody cooks, nobody washes up.',
              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the 25th</a><a class="btn line" href="{pdf("xmasveg")}" target="_blank" rel="noopener">Vegetarian</a>', XMAS_MENU)}
-      {xcard('<img src="img/bar.jpg" alt="The bar and dining room at Canal" loading="lazy">', '150', 'Parties for up to 150 guests',
+      {xcard('<img src="img/bar.jpg" alt="The bar and dining room at Canal" loading="lazy">', 'Up to 150 guests', 'Parties',
              'Seated or standing, the whole place and the terrace, all lit up.',
              f'<a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf("brochure")}" target="_blank" rel="noopener">Brochure</a>', PARTY_MENU)}
     </div>
