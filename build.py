@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=24">
+<link rel="stylesheet" href="css/style.css?v=25">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -557,10 +557,10 @@ g += f"""
 
 <section class="sec s">
   <div class="wrap team swipe">
-    {ph('table-octopus.jpg', 'Sharing plates on the table')}
-    {ph('plates-overhead-b.jpg', 'Plates from above')}
-    {ph('banquette.jpg', 'Banquette seating')}
-    {ph('crudo-plate.jpg', 'Sea bream crudo')}
+    {ph('chef-fish.jpg', 'A chef holding a whole fish over the canal')}
+    {ph('logo-glass.jpg', 'The Canal logo on the glass by the bar')}
+    {ph('wall-langoustine.jpg', 'Langoustines on the canal wall')}
+    <div class="ph arch"><img src="img/archive-coracle.jpg" alt="Archive photograph of a man and two children in a small boat on the canal" loading="lazy"></div>
   </div>
 </section>
 
