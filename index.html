@@ -13,6 +13,21 @@
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<script>
+/* Day or evening, before paint. Evening = after today's sunset in London (or before 6am). */
+(function(){var lat=51.5207,lng=-0.2006,d=new Date(),r=Math.PI/180;
+var n=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-.5);
+var eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
+var de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
+var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(de))-Math.tan(lat*r)*Math.tan(de))/r;
+var ss=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())+(720-4*(lng-ha)-eq)*6e4);
+var f=function(o){return new Intl.DateTimeFormat('en-GB',Object.assign({timeZone:'Europe/London'},o)).format(ss)};
+window.CANAL_SUNSET={hhmm:f({hour:'2-digit',minute:'2-digit',hour12:false}),label:f({hour:'numeric',minute:'2-digit',hour12:true}).replace(':','.').replace(' ','').toLowerCase()};
+var h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2-digit',hour12:false}).format(d)%24;
+var m=(d>=ss||h<6)?'evening':'day';try{var o=sessionStorage.getItem('canal-mode');if(o)m=o}catch(e){}
+document.documentElement.setAttribute('data-mode',m);
+var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo==11?'winter':mo<5?'spring':mo<8?'summer':'autumn');})();
+</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -28,6 +43,7 @@
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="logo" href="index.html" aria-label="Canal — home"></a>
   <div class="header-right">
+    <button class="mode" aria-label="Switch between day and evening"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="only-day">Day</span><span class="only-evening">Evening</span></button>
     <a class="small" href="https://canalrestaurant.giftpro.co.uk/" target="_blank" rel="noopener">Gift vouchers</a>
     <a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book</a>
   </div>
@@ -49,7 +65,7 @@
   </div>
   <div class="foot">
     <div>
-      <p style="margin-bottom:18px">A waterside restaurant led by the seasons.</p>
+      <p style="margin-bottom:18px"><span class="only-day">Lunch on the terrace, right on the water.</span><span class="only-evening">Dinner by the water, until late.</span></p>
       <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn line" href="menus.html">Our menus</a></div>
     </div>
     <div class="live" data-live aria-live="polite"><span class="live-item">Mon – Sat 12 – 10pm · Sun 12 – 8.30pm</span></div>
@@ -57,16 +73,55 @@
 </section>
 <div class="ticker" aria-hidden="true"><div class="t"><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Arrive by boat<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span><span>Splish, splash<i></i></span><span>Always sunny canal-side<i></i></span><span>Modern European<i></i></span><span>South-facing terrace<i></i></span><span>Arrive by boat<i></i></span><span>Dogs welcome<i></i></span><span>Christmas Day lunch<i></i></span><span>Bouillabaisse by the water<i></i></span></div></div>
 
-<section class="sec">
+<section class="intro-sec">
   <div class="wrap">
     <span class="tag rv" style="color:var(--caramel)">A place to escape, a place to indulge</span>
-    <p class="statement rv">Canal is a modern European restaurant perched on the water’s edge of the Grand Union Canal. A dining room and bar that spill onto a <em>sun-soaked terrace</em>, a menu that shifts with the seasons — and whatever the time of year, it’s <em>always sunny canal-side.</em></p>
-    <div class="collage">
-      <div class="a rv"><div class="ph r45"><img src="img/terrace.jpg" alt="Tables on the terrace beside the Grand Union Canal" loading="lazy"><span class="cap">The terrace</span></div></div>
-      <div class="b rv"><div class="ph r32"><img src="img/spread.jpg" alt="A table spread of sharing plates at Canal" loading="lazy"></div></div>
-      <div class="note rv"><p class="muted">Inside Mason &amp; Fifth, Westbourne Park. Long lunches in the sun, a spritz after work, dinner with the water going quiet beside you. Walk in for drinks; book for food.</p>
-        <div class="btns" style="margin-top:20px"><a class="arrow" href="find-us.html">How to find us <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div></div>
-      <div class="c rv"><div class="ph r45"><img src="img/schnitzel.jpg" alt="Schnitzel with fennel salad" loading="lazy"></div></div>
+    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union. A <em>sun-soaked terrace</em>, a menu that follows the seasons — and whatever the weather, it’s <em>always sunny canal-side.</em></p>
+  </div>
+</section>
+
+<section class="day" data-step="0" aria-label="A day at Canal">
+  <div class="wrap day-head">
+    <span class="tag rv" style="color:var(--d-acc)">A day at Canal</span>
+    <h2 class="h2 rv">From lunch in the sun to last orders.</h2>
+  </div>
+  <div class="wrap day-grid">
+    <div class="day-visual" aria-hidden="true">
+      <div class="day-clock">12:00</div>
+      <div class="plate day-plate"><span class="mark"></span><div class="food"><img src="img/spread.jpg" alt="Sharing plates at lunch"><img src="img/cocktails.jpg" alt="Cocktails on the bar"><img src="img/terrace.jpg" alt="A table on the terrace beside the canal at golden hour"><img src="img/group.jpg" alt="A full table at dinner"><img src="img/interior.jpg" alt="The bar and wine wall at Canal"></div></div>
+    </div>
+    <div class="day-steps">
+      <div class="step" data-time="12:00">
+        <div class="step-img"><div class="plate "><span class="mark"></span><div class="food"><img src="img/spread.jpg" alt="Sharing plates at lunch" loading="lazy"></div></div></div>
+        <span class="when">Midday · 12pm</span>
+        <h3>Lunch</h3>
+        <p>Soda bread and burrata, crab linguine, a glass of something cold. The terrace fills up first, so book a table outside.</p>
+        <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book lunch</a></div>
+      </div><div class="step" data-time="15:30">
+        <div class="step-img"><div class="plate "><span class="mark"></span><div class="food"><img src="img/cocktails.jpg" alt="Cocktails on the bar" loading="lazy"></div></div></div>
+        <span class="when">Afternoon · 3.30pm</span>
+        <h3>The long afternoon</h3>
+        <p>Lunch turns into an Aperol, which turns into another. The bar and terrace don’t need a booking — just turn up.</p>
+        <div class="btns"><a class="btn line" href="menus.html#drinks">Drinks list</a></div>
+      </div><div class="step" data-time="16:28" data-sunset>
+        <div class="step-img"><div class="plate "><span class="mark"></span><div class="food"><img src="img/terrace.jpg" alt="A table on the terrace beside the canal at golden hour" loading="lazy"></div></div></div>
+        <span class="when">Sunset · 4.28pm</span>
+        <h3>Golden hour</h3>
+        <p>The water goes gold, then pink, and the boats light up. It faces south, so you get every last minute of it.</p>
+        <div class="btns"><a class="btn line" href="find-us.html">Find the terrace</a></div>
+      </div><div class="step" data-time="19:30">
+        <div class="step-img"><div class="plate "><span class="mark"></span><div class="food"><img src="img/group.jpg" alt="A full table at dinner" loading="lazy"></div></div></div>
+        <span class="when">Evening · 7.30pm</span>
+        <h3>Dinner by the water</h3>
+        <p>Whole plaice, venison ragù, a bottle from somewhere you’ve never heard of. Everything’s for the table.</p>
+        <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book dinner</a><a class="btn line" href="menus.html">The menu</a></div>
+      </div><div class="step" data-time="22:00">
+        <div class="step-img"><div class="plate "><span class="mark"></span><div class="food"><img src="img/interior.jpg" alt="The bar and wine wall at Canal" loading="lazy"></div></div></div>
+        <span class="when">Last orders · 10pm</span>
+        <h3>One more?</h3>
+        <p>A Brown Butter Old Fashioned for the road. Then out along the towpath. Splish, splash.</p>
+        <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table</a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -75,27 +130,28 @@
 
 <section class="sec butter">
   <div class="wrap">
-    <div class="grid2" style="margin-bottom:48px;align-items:end">
-      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">This season at Canal.</h2></div>
-      <p class="body rv">Festive tables, a proper Marseille bouillabaisse, and room for the whole gang.</p>
+    <div class="grid2" style="margin-bottom:64px;align-items:end">
+      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">On the table this season.</h2></div>
+      <p class="body rv">Christmas by the water, a proper Marseille bouillabaisse, and room for the whole gang.</p>
     </div>
-    <div class="cards">
-      <a class="card rv" href="festive.html">
-        <div class="ph" style="position:relative"><img src="img/xmas-1.jpg" alt="Christmas Day lunch spread with roast duck at Canal" loading="lazy"><span class="pill">Booking now</span></div>
-        <h3 class="h3">Christmas at Canal</h3>
-        <p>£68 festive sharing menu, a £100 Christmas Day lunch with roast duck for the table, and parties for up to 150.</p>
+    <div class="table-top">
+      <a class="dish rv" href="festive.html">
+        <div class="plate "><span class="mark"></span><div class="food"><img src="img/xmas-1.jpg" alt="Christmas Day lunch with roast duck at Canal" loading="lazy"></div></div>
+        <h3>Christmas at Canal</h3>
+        <span class="pill">Booking now</span>
+        <p>£68 festive sharing menu, a £100 Christmas Day lunch, and parties for up to 150.</p>
         <span class="arrow">Festive menus <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
       </a>
-      <a class="card rv" href="menus.html#bouillabaisse">
-        <div class="ph "><img src="img/bouillabaisse.jpg" alt="Bouillabaisse at Canal" loading="lazy"></div>
-        <h3 class="h3">Bouillabaisse by the water</h3>
-        <p>Inspired by Marseille, served for the table. Arrive by canal boat or on foot — enquire to reserve.</p>
+      <a class="dish rv" href="menus.html#bouillabaisse">
+        <div class="plate oval"><span class="mark"></span><div class="food"><img src="img/bouillabaisse.jpg" alt="Bouillabaisse at Canal" loading="lazy"></div></div>
+        <h3>Bouillabaisse by the water</h3>
+        <p>Inspired by Marseille, served for the table. Arrive by boat or on foot — enquire to reserve.</p>
         <span class="arrow">The bouillabaisse <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
       </a>
-      <a class="card rv" href="groups.html">
-        <div class="ph "><img src="img/group.jpg" alt="A long table of friends sharing dishes at Canal" loading="lazy"></div>
-        <h3 class="h3">Groups &amp; private hire</h3>
-        <p>Tables of 8+, part or exclusive hire — up to 70 seated or 120 standing, with the terrace.</p>
+      <a class="dish rv" href="groups.html">
+        <div class="plate "><span class="mark"></span><div class="food"><img src="img/schnitzel.jpg" alt="Chicken schnitzel at Canal" loading="lazy"></div></div>
+        <h3>Groups &amp; private hire</h3>
+        <p>Tables of 8+, part or exclusive hire — up to 70 seated or 120 standing, terrace included.</p>
         <span class="arrow">Plan an event <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span>
       </a>
     </div>
@@ -118,32 +174,16 @@
   </div>
 </section>
 
-<section class="sec" id="menus">
-  <div class="wrap grid2 top">
-    <div class="rv">
-      <span class="tag" style="color:var(--caramel)">Our menus</span>
-      <h2 class="h2">A journey through the seasons.</h2>
-      <p class="body">Seasonal produce at its best, mostly for sharing. Drinks are made with our friends at A Bar with Shapes for a Name — a balance of the classics and the progressive.</p>
-      <div class="menus" style="margin-top:36px">
-        <a class="mrow" href="https://cdn.prod.website-files.com/67e6bf22004be258360f5e1b/6aeb6f21a556361f654105da_Canal%20Menu%2004.11.pdf" target="_blank" rel="noopener"><h3>Food</h3><p>The current menu, updated through the week.</p><span class="arrow">View</span></a>
-        <a class="mrow" href="https://cdn.prod.website-files.com/67e6bf22004be258360f5e1b/6aad6137d8c88da69738c892_Canal%20Wine%20List%2016.09.2026.pdf" target="_blank" rel="noopener"><h3>Wine &amp; drinks</h3><p>Plenty by the glass. Cocktails built for the terrace.</p><span class="arrow">View</span></a>
-        <a class="mrow" href="https://cdn.prod.website-files.com/67e6bf22004be258360f5e1b/6ae60e11dd229cd3f45bf1ac_Events%20Sample%20Set%20Menu.pdf" target="_blank" rel="noopener"><h3>Groups</h3><p>Sharing set menu for tables of 8 or more.</p><span class="arrow">View</span></a>
-      </div>
-    </div>
-    <div class="rv"><div class="ph r45"><img src="img/octopus.jpg" alt="Octopus with white beans and egg yolk" loading="lazy"></div></div>
-  </div>
-</section>
-
 <section class="sec water">
   <div class="wrap grid2">
     <div class="rv">
       <span class="tag">Find us</span>
       <p class="addr">Canal, Mason &amp; Fifth<br>11b Woodfield Road<br>Westbourne Park, W9 2BA</p>
       <ul class="hours"><li><span>Monday – Saturday</span><span>12pm – 10pm</span></li><li><span>Sunday</span><span>12pm – 8.30pm</span></li></ul>
-      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Moor up outside if you’re coming by boat. Dogs welcome, paws on the floor.</p>
+      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Come by boat and tell us when you book. Dogs welcome, paws on the floor.</p>
       <div class="btns" style="margin-top:22px"><a class="btn white" href="https://maps.google.com/?q=Canal+Restaurant+11b+Woodfield+Road+London+W9+2BA" target="_blank" rel="noopener">Directions</a><a class="btn line" href="find-us.html">Getting here</a></div>
     </div>
-    <div class="rv"><div class="ph r45"><img src="img/art-wall.jpg" alt="The dining room at Canal" loading="lazy"></div></div>
+    <div class="rv" style="display:flex;justify-content:center"><div style="width:min(100%,480px)" class="plate "><span class="mark"></span><div class="food"><img src="img/octopus.jpg" alt="Octopus with white beans and egg yolk" loading="lazy"></div></div></div>
   </div>
   <div class="wrap"><div class="map-wrap rv"><div class="map-scroll"><svg class="canal-map" viewBox="0 0 1220 400" role="img" aria-labelledby="mapt mapd">
   <title id="mapt">Map: Canal on the Grand Union Canal</title>
@@ -259,5 +299,6 @@
 <script src="js/live.js"></script>
 <script src="js/ripple.js"></script>
 <script src="js/menus.js"></script>
+<script src="js/day.js"></script>
 </body>
 </html>

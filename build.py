@@ -84,6 +84,21 @@ def head(title, desc, slug, solid=False):
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<script>
+/* Day or evening, before paint. Evening = after today's sunset in London (or before 6am). */
+(function(){{var lat=51.5207,lng=-0.2006,d=new Date(),r=Math.PI/180;
+var n=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-.5);
+var eq=229.18*(.000075+.001868*Math.cos(g)-.032077*Math.sin(g)-.014615*Math.cos(2*g)-.040849*Math.sin(2*g));
+var de=.006918-.399912*Math.cos(g)+.070257*Math.sin(g)-.006758*Math.cos(2*g)+.000907*Math.sin(2*g)-.002697*Math.cos(3*g)+.00148*Math.sin(3*g);
+var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(de))-Math.tan(lat*r)*Math.tan(de))/r;
+var ss=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())+(720-4*(lng-ha)-eq)*6e4);
+var f=function(o){{return new Intl.DateTimeFormat('en-GB',Object.assign({{timeZone:'Europe/London'}},o)).format(ss)}};
+window.CANAL_SUNSET={{hhmm:f({{hour:'2-digit',minute:'2-digit',hour12:false}}),label:f({{hour:'numeric',minute:'2-digit',hour12:true}}).replace(':','.').replace(' ','').toLowerCase()}};
+var h=+new Intl.DateTimeFormat('en-GB',{{timeZone:'Europe/London',hour:'2-digit',hour12:false}}).format(d)%24;
+var m=(d>=ss||h<6)?'evening':'day';try{{var o=sessionStorage.getItem('canal-mode');if(o)m=o}}catch(e){{}}
+document.documentElement.setAttribute('data-mode',m);
+var mo=d.getMonth();document.documentElement.setAttribute('data-season',mo<2||mo==11?'winter':mo<5?'spring':mo<8?'summer':'autumn');}})();
+</script>
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -105,6 +120,7 @@ def header(cur):
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <a class="logo" href="index.html" aria-label="Canal — home"></a>
   <div class="header-right">
+    <button class="mode" aria-label="Switch between day and evening"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="only-day">Day</span><span class="only-evening">Evening</span></button>
     <a class="small" href="{GIFT}" target="_blank" rel="noopener">Gift vouchers</a>
     <a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book</a>
   </div>
@@ -138,6 +154,7 @@ FOOT = f"""<footer class="footer">
 <script src="js/live.js"></script>
 <script src="js/ripple.js"></script>
 <script src="js/menus.js"></script>
+<script src="js/day.js"></script>
 </body>
 </html>
 """
@@ -185,6 +202,35 @@ def hero_media():
 
 
 # ===================================================================== HOME
+def plate(name, alt, cls="", mark=True):
+    m = '<span class="mark"></span>' if mark else ""
+    return f'<div class="plate {cls}">{m}<div class="food"><img src="{img(name)}" alt="{alt}" loading="lazy"></div></div>'
+
+
+DAY = [
+    ("12:00", "Lunch", "Midday", "Soda bread and burrata, crab linguine, a glass of something cold. The terrace fills up first, so book a table outside.",
+     "spread.jpg", "Sharing plates at lunch", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book lunch</a>', ""),
+    ("15:30", "The long afternoon", "Afternoon", "Lunch turns into an Aperol, which turns into another. The bar and terrace don’t need a booking — just turn up.",
+     "cocktails.jpg", "Cocktails on the bar", '<a class="btn line" href="menus.html#drinks">Drinks list</a>', ""),
+    ("16:28", "Golden hour", "Sunset", "The water goes gold, then pink, and the boats light up. It faces south, so you get every last minute of it.",
+     "terrace.jpg", "A table on the terrace beside the canal at golden hour", '<a class="btn line" href="find-us.html">Find the terrace</a>', ' data-sunset'),
+    ("19:30", "Dinner by the water", "Evening", "Whole plaice, venison ragù, a bottle from somewhere you’ve never heard of. Everything’s for the table.",
+     "group.jpg", "A full table at dinner", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book dinner</a><a class="btn line" href="menus.html">The menu</a>', ""),
+    ("22:00", "One more?", "Last orders", "A Brown Butter Old Fashioned for the road. Then out along the towpath. Splish, splash.",
+     "interior.jpg", "The bar and wine wall at Canal", f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table</a>', ""),
+]
+
+steps = "".join(
+    f'''<div class="step" data-time="{t}"{extra}>
+        <div class="step-img">{plate(im, alt)}</div>
+        <span class="when">{when} · {nice_t}</span>
+        <h3>{title}</h3>
+        <p>{copy}</p>
+        <div class="btns">{cta}</div>
+      </div>'''
+    for (t, title, when, copy, im, alt, cta, extra), nice_t in zip(DAY, ["12pm", "3.30pm", "4.28pm", "7.30pm", "10pm"]))
+plate_imgs = "".join(f'<img src="{img(d[4])}" alt="{d[5]}">' for d in DAY)
+
 h = head("Canal | Waterside Restaurant & Terrace, Westbourne Park",
          "Canal is a modern European restaurant on the Grand Union Canal at Westbourne Park, with a sun-soaked south-facing terrace, seasonal menus and cocktails by the water.", "")
 h += header("index.html")
@@ -197,7 +243,7 @@ h += f"""
   </div>
   <div class="foot">
     <div>
-      <p style="margin-bottom:18px">A waterside restaurant led by the seasons.</p>
+      <p style="margin-bottom:18px"><span class="only-day">Lunch on the terrace, right on the water.</span><span class="only-evening">Dinner by the water, until late.</span></p>
       <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a><a class="btn line" href="menus.html">Our menus</a></div>
     </div>
     <div class="live" data-live aria-live="polite"><span class="live-item">Mon – Sat 12 – 10pm · Sun 12 – 8.30pm</span></div>
@@ -205,16 +251,25 @@ h += f"""
 </section>
 {TICKER}
 
-<section class="sec">
+<section class="intro-sec">
   <div class="wrap">
     <span class="tag rv" style="color:var(--caramel)">A place to escape, a place to indulge</span>
-    <p class="statement rv">Canal is a modern European restaurant perched on the water’s edge of the Grand Union Canal. A dining room and bar that spill onto a <em>sun-soaked terrace</em>, a menu that shifts with the seasons — and whatever the time of year, it’s <em>always sunny canal-side.</em></p>
-    <div class="collage">
-      <div class="a rv">{ph('terrace.jpg', 'Tables on the terrace beside the Grand Union Canal', 'r45', 'The terrace')}</div>
-      <div class="b rv">{ph('spread.jpg', 'A table spread of sharing plates at Canal', 'r32')}</div>
-      <div class="note rv"><p class="muted">Inside Mason &amp; Fifth, Westbourne Park. Long lunches in the sun, a spritz after work, dinner with the water going quiet beside you. Walk in for drinks; book for food.</p>
-        <div class="btns" style="margin-top:20px"><a class="arrow" href="find-us.html">How to find us {ARR}</a></div></div>
-      <div class="c rv">{ph('schnitzel.jpg', 'Schnitzel with fennel salad', 'r45')}</div>
+    <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union. A <em>sun-soaked terrace</em>, a menu that follows the seasons — and whatever the weather, it’s <em>always sunny canal-side.</em></p>
+  </div>
+</section>
+
+<section class="day" data-step="0" aria-label="A day at Canal">
+  <div class="wrap day-head">
+    <span class="tag rv" style="color:var(--d-acc)">A day at Canal</span>
+    <h2 class="h2 rv">From lunch in the sun to last orders.</h2>
+  </div>
+  <div class="wrap day-grid">
+    <div class="day-visual" aria-hidden="true">
+      <div class="day-clock">12:00</div>
+      <div class="plate day-plate"><span class="mark"></span><div class="food">{plate_imgs}</div></div>
+    </div>
+    <div class="day-steps">
+      {steps}
     </div>
   </div>
 </section>
@@ -223,27 +278,28 @@ h += f"""
 
 <section class="sec butter">
   <div class="wrap">
-    <div class="grid2" style="margin-bottom:48px;align-items:end">
-      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">This season at Canal.</h2></div>
-      <p class="body rv">Festive tables, a proper Marseille bouillabaisse, and room for the whole gang.</p>
+    <div class="grid2" style="margin-bottom:64px;align-items:end">
+      <div class="rv"><span class="tag">What’s on</span><h2 class="h2">On the table this season.</h2></div>
+      <p class="body rv">Christmas by the water, a proper Marseille bouillabaisse, and room for the whole gang.</p>
     </div>
-    <div class="cards">
-      <a class="card rv" href="festive.html">
-        <div class="ph" style="position:relative"><img src="img/xmas-1.jpg" alt="Christmas Day lunch spread with roast duck at Canal" loading="lazy"><span class="pill">Booking now</span></div>
-        <h3 class="h3">Christmas at Canal</h3>
-        <p>£68 festive sharing menu, a £100 Christmas Day lunch with roast duck for the table, and parties for up to 150.</p>
+    <div class="table-top">
+      <a class="dish rv" href="festive.html">
+        {plate('xmas-1.jpg', 'Christmas Day lunch with roast duck at Canal')}
+        <h3>Christmas at Canal</h3>
+        <span class="pill">Booking now</span>
+        <p>£68 festive sharing menu, a £100 Christmas Day lunch, and parties for up to 150.</p>
         <span class="arrow">Festive menus {ARR}</span>
       </a>
-      <a class="card rv" href="menus.html#bouillabaisse">
-        {ph('bouillabaisse.jpg', 'Bouillabaisse at Canal')}
-        <h3 class="h3">Bouillabaisse by the water</h3>
-        <p>Inspired by Marseille, served for the table. Arrive by canal boat or on foot — enquire to reserve.</p>
+      <a class="dish rv" href="menus.html#bouillabaisse">
+        {plate('bouillabaisse.jpg', 'Bouillabaisse at Canal', 'oval')}
+        <h3>Bouillabaisse by the water</h3>
+        <p>Inspired by Marseille, served for the table. Arrive by boat or on foot — enquire to reserve.</p>
         <span class="arrow">The bouillabaisse {ARR}</span>
       </a>
-      <a class="card rv" href="groups.html">
-        {ph('group.jpg', 'A long table of friends sharing dishes at Canal')}
-        <h3 class="h3">Groups &amp; private hire</h3>
-        <p>Tables of 8+, part or exclusive hire — up to 70 seated or 120 standing, with the terrace.</p>
+      <a class="dish rv" href="groups.html">
+        {plate('schnitzel.jpg', 'Chicken schnitzel at Canal')}
+        <h3>Groups &amp; private hire</h3>
+        <p>Tables of 8+, part or exclusive hire — up to 70 seated or 120 standing, terrace included.</p>
         <span class="arrow">Plan an event {ARR}</span>
       </a>
     </div>
@@ -266,32 +322,16 @@ h += f"""
   </div>
 </section>
 
-<section class="sec" id="menus">
-  <div class="wrap grid2 top">
-    <div class="rv">
-      <span class="tag" style="color:var(--caramel)">Our menus</span>
-      <h2 class="h2">A journey through the seasons.</h2>
-      <p class="body">Seasonal produce at its best, mostly for sharing. Drinks are made with our friends at A Bar with Shapes for a Name — a balance of the classics and the progressive.</p>
-      <div class="menus" style="margin-top:36px">
-        <a class="mrow" href="{pdf('food')}" target="_blank" rel="noopener"><h3>Food</h3><p>The current menu, updated through the week.</p><span class="arrow">View</span></a>
-        <a class="mrow" href="{pdf('wine')}" target="_blank" rel="noopener"><h3>Wine &amp; drinks</h3><p>Plenty by the glass. Cocktails built for the terrace.</p><span class="arrow">View</span></a>
-        <a class="mrow" href="{pdf('group')}" target="_blank" rel="noopener"><h3>Groups</h3><p>Sharing set menu for tables of 8 or more.</p><span class="arrow">View</span></a>
-      </div>
-    </div>
-    <div class="rv">{ph('octopus.jpg', 'Octopus with white beans and egg yolk', 'r45')}</div>
-  </div>
-</section>
-
 <section class="sec water">
   <div class="wrap grid2">
     <div class="rv">
       <span class="tag">Find us</span>
       <p class="addr">Canal, Mason &amp; Fifth<br>11b Woodfield Road<br>Westbourne Park, W9 2BA</p>
       <ul class="hours"><li><span>Monday – Saturday</span><span>12pm – 10pm</span></li><li><span>Sunday</span><span>12pm – 8.30pm</span></li></ul>
-      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Moor up outside if you’re coming by boat. Dogs welcome, paws on the floor.</p>
+      <p class="body" style="margin-top:22px">Two minutes from Westbourne Park station. Come by boat and tell us when you book. Dogs welcome, paws on the floor.</p>
       <div class="btns" style="margin-top:22px"><a class="btn white" href="{MAPS}" target="_blank" rel="noopener">Directions</a><a class="btn line" href="find-us.html">Getting here</a></div>
     </div>
-    <div class="rv">{ph('art-wall.jpg', 'The dining room at Canal', 'r45')}</div>
+    <div class="rv" style="display:flex;justify-content:center">{plate('octopus.jpg', 'Octopus with white beans and egg yolk', '', True).replace('class="plate ', 'style="width:min(100%,480px)" class="plate ')}</div>
   </div>
   <div class="wrap"><div class="map-wrap rv"><div class="map-scroll">{MAP_SVG}</div></div></div>
 </section>
@@ -318,7 +358,10 @@ m += f"""
       <p class="statement rv" style="font-size:clamp(26px,3vw,44px)">Seasonal produce at its very best — crudo and shellfish when it’s warm, braises and pies when it isn’t. <em>Most things arrive for the table.</em></p>
       <p class="body muted rv">Menus change through the week, so these are the latest versions. Vegetarian, vegan and gluten-free options are always on. Tell us about allergies when you book. A discretionary 13.5% service charge is added.</p>
     </div>
-    <div id="menu" data-menus="data/menu.csv">
+    <div id="menu" class="menu-card rv" data-menus="data/menu.csv">
+      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#8B2E2A" stroke-width="3.5" stroke-dasharray="180 8 30 12 40" opacity=".55"/><circle cx="52" cy="48" r="38" fill="none" stroke="#8B2E2A" stroke-width="1.2" opacity=".35"/></svg>
+      <img class="card-logo" src="img/logo-ink.png" alt="Canal">
+      <span class="card-sub spaced">Westbourne Park</span>
       <div class="menu-tabs" role="tablist"></div>
       <div class="menu-body"></div>
       <p class="fine" style="margin-top:8px">v vegetarian · ve vegan. Our menus change often — this is today’s. Discretionary 13.5% service; £1 per person for unlimited filtered water.</p>
