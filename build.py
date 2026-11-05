@@ -190,7 +190,7 @@ def vid(name, alt, cls="", loop=True):
 
 
 def arch(name, alt, cap):
-    return f'<figure class="small arch"><div class="ph"><img src="img/{name}" alt="{alt}" loading="lazy"></div><figcaption>{cap}</figcaption></figure>'
+    return f'<figure class="small arch"><div class="ph"><img src="img/{name}" alt="{alt}" loading="lazy"></div></figure>'
 
 
 h = head("Canal | Waterside Restaurant & Terrace, Westbourne Park",
