@@ -489,7 +489,7 @@ f += f"""
     <div class="xs-row flip rv">
       <div class="xs-txt"><span class="xs-n">Stay a while</span><p class="xs-big">Roast duck at the table, then one more glass.</p><p class="xs-small">Duck with creamed sprouts and quince, potatoes fried in duck fat, brown butter cake to finish. There’s a full vegetarian menu too. Nobody cooks, nobody washes up.</p>
         <div class="btns" style="margin-top:22px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day {ARR}</a></div></div>
-      <div class="xs-media">{vid('xmas-gravy-top', 'Gravy poured over roast duck, then red wine on the table')}</div>
+      <div class="xs-media"><div class="ph" style="aspect-ratio:4/3"><img src="img/xmas-6.jpg" alt="Roast duck with carrots and chard on the plate" loading="lazy" style="object-position:center 60%"></div></div>
     </div>
   </div>
 </section>
