@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=12">
+<link rel="stylesheet" href="css/style.css?v=13">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -234,7 +234,7 @@ h += f"""
 </section>
 
 <!-- Menus -->
-<section class="sec s">
+<section class="sec s menus-band">
   <div class="wrap">
     <span class="tag rv" style="color:var(--caramel)">Menus</span>
     <div class="menu-links rv">
@@ -301,7 +301,7 @@ h += f"""
 </section>
 
 <!-- Staff -->
-<section class="sec s">
+<section class="sec s booked-band">
   <div class="wrap">
     <div class="booked rv"><h2>Have you booked yet?</h2><div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div></div>
     <div class="team swipe rv">

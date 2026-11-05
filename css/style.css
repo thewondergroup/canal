@@ -538,3 +538,12 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .services.swipe{margin:0;padding:0 var(--g);scroll-padding-left:var(--g)}
   .team.swipe{margin:0 calc(-1 * var(--g));padding:0 var(--g);scroll-padding-left:var(--g)}
 }
+
+/* v9: bring the warmth back */
+:root{--paper:#F6EFE1}
+.menus-band{background:var(--butter)}
+.booked-band{background:var(--caramel);color:#FBF3E6}
+.booked-band .btn{background:#FBF3E6;color:#5A3410;border-color:#FBF3E6}
+.booked-band .btn:hover{background:#fff;border-color:#fff;color:#3E230A}
+.menus-band .menu-links,.menus-band .menu-links a{border-color:rgba(32,27,22,.18)}
+.menus-band .menu-links a:hover{color:var(--caramel-deep)}
