@@ -480,3 +480,19 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .feat .small,.feat.flip .small{position:relative;left:auto;right:auto;width:55%;margin:-18% 0 0 auto;display:block}
   .feat.flip .small{margin:-18% auto 0 0}
 }
+
+/* v7 fixes */
+.hero.split .media{grid-template-rows:100%;height:100%}
+.hero.split .media video{height:100%;min-height:0}
+.hero.split::after{background:linear-gradient(180deg,rgba(32,27,22,.35) 0%,rgba(32,27,22,0) 25%,rgba(32,27,22,0) 70%,rgba(32,27,22,.45) 100%)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,28px)}
+.services a{display:flex;flex-direction:column;gap:12px}
+.services .ph{aspect-ratio:4/5}
+.services a:hover .ph img{transform:scale(1.035)}
+.services .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.services h3{font-size:clamp(22px,2vw,28px);letter-spacing:-.02em}
+.services .row span{font-size:14px;opacity:.6}
+.services p{font-size:15px;opacity:.75;max-width:34ch}
+.booked{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:clamp(28px,4vw,44px)}
+.booked h2{font-size:clamp(40px,6vw,88px);letter-spacing:-.05em;line-height:.92}
+@media (max-width:900px){.services{grid-template-columns:1fr}.booked{flex-direction:column;align-items:flex-start}}

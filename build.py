@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=7">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -132,11 +132,11 @@ FOOT = f"""<footer class="footer">
     <div class="fbottom"><span>© Canal 2026</span><span>Splish, splash.</span></div>
   </div>
 </footer>
-<script src="js/config.js"></script>
-<script src="js/site.js"></script>
-<script src="js/live.js"></script>
-<script src="js/ripple.js"></script>
-<script src="js/menus.js"></script>
+<script src="js/config.js?v=7"></script>
+<script src="js/site.js?v=7"></script>
+<script src="js/live.js?v=7"></script>
+<script src="js/ripple.js?v=7"></script>
+<script src="js/menus.js?v=7"></script>
 </body>
 </html>
 """
@@ -219,7 +219,17 @@ h += f"""
 <section class="intro-sec">
   <div class="wrap intro-grid">
     <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p>
-    <p class="body rv">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
+    <div class="rv"><p class="body" style="margin-bottom:22px">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
+      <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div></div>
+  </div>
+</section>
+
+<!-- Lunch / dinner / festive -->
+<section class="sec s">
+  <div class="wrap services">
+    <a class="rv" href="{BOOK}" target="_blank" rel="noopener">{ph('plates-overhead-a.jpg', 'Lunch plates on the table at Canal')}<div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
+    <a class="rv" href="{BOOK}" target="_blank" rel="noopener">{ph('table-schnitzel.jpg', 'Dinner at Canal with a glass of wine')}<div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
+    <a class="rv" href="festive.html">{ph('festive2.jpg', 'The festive sharing menu at Canal')}<div class="row"><h3>Festive</h3><span>Now booking</span></div><p>A festive sharing menu, Christmas Day lunch and parties.</p></a>
   </div>
 </section>
 
@@ -241,44 +251,6 @@ h += f"""
     <div class="media rv">
       <div class="ph big"><img src="img/xmas-5.jpg" alt="Christmas Day lunch at Canal, roast duck in the middle of the table" loading="lazy"></div>
       {arch('archive-barge.jpg', 'Archive photograph of a woman with a mug on a working barge', 'Winter on the Grand Union.')}
-    </div>
-  </div>
-</section>
-
-<!-- On the menu (live from the menu sheet) -->
-<section class="sec butter">
-  <div class="wrap feat flip">
-    <div class="txt rv">
-      <span class="tag">On the menu</span>
-      <h2>This week’s food</h2>
-      <div class="preview" data-menu-preview data-menu="food" data-sections="Snacks,Small plates,Large plates" data-per="3"></div>
-      <p class="note" style="margin:0 0 22px">The menu changes through the week. Bouillabaisse for the table is available to pre-order.</p>
-      <div class="btns"><a class="btn" href="menus.html">Full menu</a><a class="btn line" href="menus.html#bouillabaisse">Bouillabaisse</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/wall-langoustine.jpg" alt="Langoustines on the canal wall" loading="lazy"></div>
-      {arch('archive-fish.jpg', 'Archive photograph of a fisherman holding two large fish', 'Fish, still the main event.')}
-    </div>
-  </div>
-</section>
-
-<!-- Bar & terrace -->
-<section class="sec">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">The bar &amp; terrace</span>
-      <h2>Just here for a drink?</h2>
-      <p class="lead">No need to book. Walk in for cocktails, wine by the glass and snacks, all day.</p>
-      <div class="preview" data-menu-preview data-menu="drinks" data-sections="Cocktails" data-per="8"></div>
-      <ul class="facts">
-        <li><span>Terrace</span><span>South-facing, part heated &amp; covered</span></li>
-        <li><span>Dogs</span><span>Welcome inside and out</span></li>
-      </ul>
-      <div class="btns"><a class="btn line" href="menus.html#drinks">Drinks list</a></div>
-    </div>
-    <div class="media rv">
-      {vid('v-pour', 'A glass of wine being poured at the table', 'big')}
-      {arch('archive-swimmer.jpg', 'Archive photograph of a woman waving from a rubber ring in the water', 'Always sunny canal-side.')}
     </div>
   </div>
 </section>
@@ -307,7 +279,7 @@ h += f"""
 <!-- Staff -->
 <section class="sec s">
   <div class="wrap">
-    <div class="kicker rv"><h2>Staff lunch</h2><p>The team, eating the menu.</p></div>
+    <div class="booked rv"><h2>Have you booked yet?</h2><div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a table {ARR}</a></div></div>
     <div class="team rv">
       {vid('v-team-1', 'A member of the Canal team at lunch')}
       {vid('v-team-2', 'A member of the Canal team at lunch')}

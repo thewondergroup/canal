@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=7">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -63,7 +63,17 @@
 <section class="intro-sec">
   <div class="wrap intro-grid">
     <p class="statement rv">A modern European restaurant on the water’s edge of the Grand Union Canal. Whatever the time of year, it’s <em>always sunny canal-side.</em></p>
-    <p class="body rv">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
+    <div class="rv"><p class="body" style="margin-bottom:22px">A dining room and bar inside Mason &amp; Fifth, opening onto a south-facing terrace. Long lunches, a spritz after work, dinner as the water goes quiet.</p>
+      <div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div></div>
+  </div>
+</section>
+
+<!-- Lunch / dinner / festive -->
+<section class="sec s">
+  <div class="wrap services">
+    <a class="rv" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener"><div class="ph "><img src="img/plates-overhead-a.jpg" alt="Lunch plates on the table at Canal" loading="lazy"></div><div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
+    <a class="rv" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener"><div class="ph "><img src="img/table-schnitzel.jpg" alt="Dinner at Canal with a glass of wine" loading="lazy"></div><div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
+    <a class="rv" href="festive.html"><div class="ph "><img src="img/festive2.jpg" alt="The festive sharing menu at Canal" loading="lazy"></div><div class="row"><h3>Festive</h3><span>Now booking</span></div><p>A festive sharing menu, Christmas Day lunch and parties.</p></a>
   </div>
 </section>
 
@@ -85,44 +95,6 @@
     <div class="media rv">
       <div class="ph big"><img src="img/xmas-5.jpg" alt="Christmas Day lunch at Canal, roast duck in the middle of the table" loading="lazy"></div>
       <figure class="small arch"><div class="ph"><img src="img/archive-barge.jpg" alt="Archive photograph of a woman with a mug on a working barge" loading="lazy"></div><figcaption>Winter on the Grand Union.</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- On the menu (live from the menu sheet) -->
-<section class="sec butter">
-  <div class="wrap feat flip">
-    <div class="txt rv">
-      <span class="tag">On the menu</span>
-      <h2>This week’s food</h2>
-      <div class="preview" data-menu-preview data-menu="food" data-sections="Snacks,Small plates,Large plates" data-per="3"></div>
-      <p class="note" style="margin:0 0 22px">The menu changes through the week. Bouillabaisse for the table is available to pre-order.</p>
-      <div class="btns"><a class="btn" href="menus.html">Full menu</a><a class="btn line" href="menus.html#bouillabaisse">Bouillabaisse</a></div>
-    </div>
-    <div class="media rv">
-      <div class="ph big"><img src="img/wall-langoustine.jpg" alt="Langoustines on the canal wall" loading="lazy"></div>
-      <figure class="small arch"><div class="ph"><img src="img/archive-fish.jpg" alt="Archive photograph of a fisherman holding two large fish" loading="lazy"></div><figcaption>Fish, still the main event.</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- Bar & terrace -->
-<section class="sec">
-  <div class="wrap feat">
-    <div class="txt rv">
-      <span class="tag" style="color:var(--caramel)">The bar &amp; terrace</span>
-      <h2>Just here for a drink?</h2>
-      <p class="lead">No need to book. Walk in for cocktails, wine by the glass and snacks, all day.</p>
-      <div class="preview" data-menu-preview data-menu="drinks" data-sections="Cocktails" data-per="8"></div>
-      <ul class="facts">
-        <li><span>Terrace</span><span>South-facing, part heated &amp; covered</span></li>
-        <li><span>Dogs</span><span>Welcome inside and out</span></li>
-      </ul>
-      <div class="btns"><a class="btn line" href="menus.html#drinks">Drinks list</a></div>
-    </div>
-    <div class="media rv">
-      <div class="vid big"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-pour.jpg" aria-label="A glass of wine being poured at the table"><source src="video/v-pour.mp4" type="video/mp4"></video></div>
-      <figure class="small arch"><div class="ph"><img src="img/archive-swimmer.jpg" alt="Archive photograph of a woman waving from a rubber ring in the water" loading="lazy"></div><figcaption>Always sunny canal-side.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -151,7 +123,7 @@
 <!-- Staff -->
 <section class="sec s">
   <div class="wrap">
-    <div class="kicker rv"><h2>Staff lunch</h2><p>The team, eating the menu.</p></div>
+    <div class="booked rv"><h2>Have you booked yet?</h2><div class="btns"><a class="btn" href="https://www.sevenrooms.com/explore/canalrestaurant/reservations/create/search/" target="_blank" rel="noopener">Book a table <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div></div>
     <div class="team rv">
       <div class="vid "><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-team-1.jpg" aria-label="A member of the Canal team at lunch"><source src="video/v-team-1.mp4" type="video/mp4"></video></div>
       <div class="vid "><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-team-2.jpg" aria-label="A member of the Canal team at lunch"><source src="video/v-team-2.mp4" type="video/mp4"></video></div>
@@ -202,10 +174,10 @@
     <div class="fbottom"><span>© Canal 2026</span><span>Splish, splash.</span></div>
   </div>
 </footer>
-<script src="js/config.js"></script>
-<script src="js/site.js"></script>
-<script src="js/live.js"></script>
-<script src="js/ripple.js"></script>
-<script src="js/menus.js"></script>
+<script src="js/config.js?v=7"></script>
+<script src="js/site.js?v=7"></script>
+<script src="js/live.js?v=7"></script>
+<script src="js/ripple.js?v=7"></script>
+<script src="js/menus.js?v=7"></script>
 </body>
 </html>
