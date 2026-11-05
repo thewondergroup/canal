@@ -62,7 +62,7 @@ def ph(name, alt, cls="", cap=""):
 
 
 def reel(name, alt):
-    return (f'<div class="ph r916"><video data-inview muted loop playsinline preload="none" poster="video/{name}-poster.jpg" '
+    return (f'<div class="ph r916"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/{name}-poster.jpg" '
             f'aria-label="{alt}"><source src="video/{name}.mp4" type="video/mp4"></video></div>')
 
 
@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=7">
+<link rel="stylesheet" href="css/style.css?v=8">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -227,8 +227,8 @@ h += f"""
 <!-- Lunch / dinner / festive -->
 <section class="sec s">
   <div class="wrap services">
-    <a class="rv" href="{BOOK}" target="_blank" rel="noopener">{ph('plates-overhead-a.jpg', 'Lunch plates on the table at Canal')}<div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
-    <a class="rv" href="{BOOK}" target="_blank" rel="noopener">{ph('table-schnitzel.jpg', 'Dinner at Canal with a glass of wine')}<div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
+    <a class="rv" href="menus.html">{ph('plates-overhead-a.jpg', 'Lunch plates on the table at Canal')}<div class="row"><h3>Lunch</h3><span>From 12, every day</span></div><p>Plates for the table and a terrace in the sun.</p></a>
+    <a class="rv" href="menus.html">{ph('table-schnitzel.jpg', 'Dinner at Canal with a glass of wine')}<div class="row"><h3>Dinner</h3><span>Until 10, Sun 8.30</span></div><p>Seasonal, modern European, mostly for sharing.</p></a>
     <a class="rv" href="festive.html">{ph('festive2.jpg', 'The festive sharing menu at Canal')}<div class="row"><h3>Festive</h3><span>Now booking</span></div><p>A festive sharing menu, Christmas Day lunch and parties.</p></a>
   </div>
 </section>
