@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=22">
+<link rel="stylesheet" href="css/style.css?v=23">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -495,24 +495,14 @@ f += f"""
     <div class="kicker rv"><h2>Christmas Day at Canal</h2><p>How the day goes.</p></div>
 
     <div class="xs-row rv">
-      <div class="xs-txt"><span class="xs-n">01 · Arrive</span><p class="xs-big">Come in off the towpath, out of the cold.</p><p class="xs-small">A glass of Champagne to start — Forget de Brimont, Brut Terroir. The terrace is part covered and heated if you want to watch the water.</p></div>
-      <div class="xs-media">{vid('v-exterior', 'The Canal canopy over the terrace and the canal', 'land')}</div>
+      <div class="xs-txt"><span class="xs-n">Arrive</span><p class="xs-big">Come in off the towpath, and everything arrives at once.</p><p class="xs-small">A glass of Forget de Brimont Champagne, then soda bread and brown butter, smoked trout, Coombeshead Farm ham, Montgomery cheddar dumplings with Tunworth custard, and burrata with Todolí citrus. All for sharing.</p></div>
+      <div class="xs-media">{vid('v-exterior', 'The Canal canopy over the terrace and the canal')}</div>
     </div>
 
     <div class="xs-row flip rv">
-      <div class="xs-txt"><span class="xs-n">02 · The table fills up</span><p class="xs-big">Then everything arrives at once.</p><p class="xs-small">Soda bread and brown butter, smoked trout, Coombeshead Farm ham, Montgomery cheddar dumplings with Tunworth custard, burrata with Todolí citrus. All for sharing.</p></div>
-      <div class="xs-media"><div class="ph"><img src="img/xmas-2.jpg" alt="Christmas starters to share" loading="lazy"></div></div>
-    </div>
-
-    <div class="xs-row rv">
-      <div class="xs-txt"><span class="xs-n">03 · The duck</span><p class="xs-big">Roast duck, carved at the table.</p><p class="xs-small">With creamed Brussels sprouts and quince, potatoes fried in duck fat, and carrots in chervil butter. There’s a full vegetarian menu too.</p></div>
-      <div class="xs-media"><div class="ph"><img src="img/xmas-6.jpg" alt="Roast duck with carrots and chard" loading="lazy"></div></div>
-    </div>
-
-    <div class="xs-row flip rv">
-      <div class="xs-txt"><span class="xs-n">04 · Stay a while</span><p class="xs-big">Brown butter cake, one more glass.</p><p class="xs-small">Spiced pear and crème fraîche to finish. Nobody has to cook, nobody has to wash up — and the canal’s right there for a walk after.</p>
+      <div class="xs-txt"><span class="xs-n">Stay a while</span><p class="xs-big">Roast duck at the table, then one more glass.</p><p class="xs-small">Duck with creamed sprouts and quince, potatoes fried in duck fat, brown butter cake to finish. There’s a full vegetarian menu too. Nobody cooks, nobody washes up.</p>
         <div class="btns" style="margin-top:22px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day {ARR}</a></div></div>
-      <div class="xs-media"><div class="ph arch"><img src="img/archive-narrowboat.jpg" alt="Archive photograph of a narrowboat on the canal" loading="lazy"></div></div>
+      <div class="xs-media">{vid('v-pour', 'A bottle of wine being poured at the table')}</div>
     </div>
   </div>
 </section>
