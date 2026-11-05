@@ -511,3 +511,5 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
 @keyframes igloop{to{transform:translateX(calc(-50% - 5px))}}
 @media (prefers-reduced-motion:reduce){.ig-track{animation:none}}
 .splish{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:22px}
+.footer .big-logo{width:min(46vw,300px);margin:0 auto 18px}
+.footer .spaced{margin:0 0 56px}
