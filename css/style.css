@@ -695,3 +695,5 @@ body.locked .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg
   .xs-media{order:-1 !important}
 }
 .xs-media .vid.land{aspect-ratio:4/3}
+.team .ph{aspect-ratio:9/16}
+.xs-media .vid{aspect-ratio:4/3}

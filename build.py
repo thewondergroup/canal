@@ -82,7 +82,7 @@ def head(title, desc, slug, solid=False):
 <meta name="theme-color" content="#F8B830">
 <link rel="icon" href="img/logo-caramel.png">
 <link rel="preload" href="fonts/GeigyLLSub-Medium.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=23">
+<link rel="stylesheet" href="css/style.css?v=24">
 <script type="application/ld+json">
 {{"@context":"https://schema.org","@type":"Restaurant","name":"Canal","url":"https://www.canalrestaurant.com/",
 "telephone":"+442081766073","email":"hello@canalrestaurant.com","servesCuisine":"Modern European","priceRange":"££",
@@ -483,7 +483,7 @@ f += f"""
       {xcard('<img src="img/xmas-7.jpg" alt="Roast duck carved at the Christmas table" loading="lazy">', '£100', 'Christmas Day',
              'Champagne to start, plates to pass, roast duck in the middle. Nobody cooks, nobody washes up.',
              f'<a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the 25th</a><a class="btn line" href="{pdf("xmasveg")}" target="_blank" rel="noopener">Vegetarian</a>', XMAS_MENU)}
-      {xcard('<video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-pour.jpg" aria-label="Wine being poured"><source src="video/v-pour.mp4" type="video/mp4"></video>', '150', 'Parties for up to 150 guests',
+      {xcard('<img src="img/bar.jpg" alt="The bar and dining room at Canal" loading="lazy">', '150', 'Parties for up to 150 guests',
              'Seated or standing, the whole place and the terrace, all lit up.',
              f'<a class="btn" href="{ENQ}" target="_blank" rel="noopener">Enquire</a><a class="btn line" href="{pdf("brochure")}" target="_blank" rel="noopener">Brochure</a>', PARTY_MENU)}
     </div>
@@ -496,19 +496,19 @@ f += f"""
 
     <div class="xs-row rv">
       <div class="xs-txt"><span class="xs-n">Arrive</span><p class="xs-big">Come in off the towpath, and everything arrives at once.</p><p class="xs-small">A glass of Forget de Brimont Champagne, then soda bread and brown butter, smoked trout, Coombeshead Farm ham, Montgomery cheddar dumplings with Tunworth custard, and burrata with Todolí citrus. All for sharing.</p></div>
-      <div class="xs-media">{vid('v-exterior', 'The Canal canopy over the terrace and the canal')}</div>
+      <div class="xs-media">{vid('xmas-plates-top', 'Plates passed around the Christmas table')}</div>
     </div>
 
     <div class="xs-row flip rv">
       <div class="xs-txt"><span class="xs-n">Stay a while</span><p class="xs-big">Roast duck at the table, then one more glass.</p><p class="xs-small">Duck with creamed sprouts and quince, potatoes fried in duck fat, brown butter cake to finish. There’s a full vegetarian menu too. Nobody cooks, nobody washes up.</p>
         <div class="btns" style="margin-top:22px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Christmas Day {ARR}</a></div></div>
-      <div class="xs-media">{vid('v-pour', 'A bottle of wine being poured at the table')}</div>
+      <div class="xs-media">{vid('xmas-cheers-top', 'Glasses raised over Christmas lunch')}</div>
     </div>
   </div>
 </section>
 
 <section class="xmas-wide">
-  <div class="vid"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-terrace-table.jpg" aria-label="A group at a long table on the terrace"><source src="video/v-terrace-table.mp4" type="video/mp4"></video></div>
+  <div class="vid"><video data-inview autoplay muted loop playsinline preload="metadata" poster="video/v-terrace-plates.jpg" aria-label="Plates arriving at a terrace table by the canal"><source src="video/v-terrace-plates.mp4" type="video/mp4"></video></div>
   <div class="xw-txt"><span class="tag">Christmas parties</span><p>The whole place, the water, the lights. Up to 70 seated or 150 standing with the terrace.</p><a class="btn white" href="{ENQ}" target="_blank" rel="noopener">Plan your party {ARR}</a></div>
 </section>
 
@@ -535,7 +535,7 @@ def fmt(img_html, num, label, line, guests):
 g = head("Groups, Private Hire & Events | Canal, Westbourne Park",
          "Private hire and group bookings at Canal on the Grand Union Canal: up to 70 seated or 120 standing, with a south-facing terrace.", "groups")
 g += header("groups.html")
-g += page_hero("Groups &amp; private hire", "Bring everyone.", hvid('v-terrace-table', 'A group at lunch on the terrace, seen from above'))
+g += page_hero("Groups &amp; private hire", "Bring everyone.", hvid('v-terrace-drink', 'A guest raising a glass on the terrace'))
 g += f"""
 <section class="sec">
   <div class="wrap">
@@ -557,10 +557,10 @@ g += f"""
 
 <section class="sec s">
   <div class="wrap team swipe">
-    {vid('v-terrace-plates', 'Plates arriving at a terrace table by the canal')}
-    {vid('v-terrace-drink', 'A guest with a glass of wine on the terrace')}
-    {vid('v-terrace-man', 'Lunch on the terrace from above')}
-    {vid('v-pour', 'Wine being poured at the table')}
+    {ph('table-octopus.jpg', 'Sharing plates on the table')}
+    {ph('plates-overhead-b.jpg', 'Plates from above')}
+    {ph('banquette.jpg', 'Banquette seating')}
+    {ph('crudo-plate.jpg', 'Sea bream crudo')}
   </div>
 </section>
 
@@ -595,7 +595,7 @@ write("groups.html", g)
 fu = head("Find Us | Canal, 11b Woodfield Road, Westbourne Park W9",
           "Canal is at Mason & Fifth, 11b Woodfield Road, London W9 2BA, on the Grand Union Canal — two minutes from Westbourne Park station. Opening hours and directions.", "find-us")
 fu += header("find-us.html")
-fu += page_hero("Find us", "On the water at Westbourne Park.", hvid('v-exterior', 'The Canal canopy over the terrace and the canal'))
+fu += page_hero("Find us", "On the water at Westbourne Park.", '<img src="img/og.jpg" alt="A table on the terrace beside the canal">')
 fu += f"""
 <section class="sec water">
   <div class="wrap grid2">
@@ -633,7 +633,7 @@ fu += f"""
       <div class="btns"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book the terrace</a></div>
     </div>
     <div class="media rv">
-      <div class="ph big land"><img src="img/og.jpg" alt="A table on the terrace beside the canal" loading="lazy"></div>
+      <div class="ph big land"><img src="img/window-table.jpg" alt="A table by the window onto the terrace" loading="lazy"></div>
       {arch('archive-narrowboat.jpg', 'Archive photograph of a narrowboat on the canal', '')}
     </div>
   </div>
